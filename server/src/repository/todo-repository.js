@@ -1,9 +1,9 @@
 const { Todo } = require('../models/index');
 
 class TodoRepository {
-	async createTodo({ name, description }) {
+	async createTodo({ title, description }) {
 		try {
-			const todo = await Todo.create({ name, description });
+			const todo = await Todo.create({ title, description });
 			return todo;
 		} catch (error) {
 			console.log('Something went worng in the repository layer..!');
