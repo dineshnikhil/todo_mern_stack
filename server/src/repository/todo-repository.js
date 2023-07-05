@@ -10,6 +10,20 @@ class TodoRepository {
 			throw { error };
 		}
 	}
+
+	async deleteTodo(todoId) {
+		try {
+			const response = await Todo.destroy({
+				where: {
+					id: todoId,
+				},
+			});
+			return response;
+		} catch (error) {
+			console.log('Something went worng in the repository layer..!');
+			throw { error };
+		}
+	}
 }
 
 module.exports = TodoRepository;

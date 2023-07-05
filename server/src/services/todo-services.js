@@ -14,6 +14,16 @@ class TodoServices {
 			throw { error };
 		}
 	}
+
+	async deleteTodo(todoId) {
+		try {
+			const response = await this.todoRepository.deleteTodo(todoId);
+			return response;
+		} catch (error) {
+			console.log('Something went wrong in the service layer..!');
+			throw { error };
+		}
+	}
 }
 
 module.exports = TodoServices;
