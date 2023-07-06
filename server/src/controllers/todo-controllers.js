@@ -74,8 +74,33 @@ const getAll = async (req, res) => {
 	}
 };
 
+/**
+ * PATCH -> /todo/:id
+ * Update the todo task with the given data in the body and id given in the params.
+ */
+const update = async (req, res) => {
+	try {
+		const todo = await todoServices.updateTodo(req.body, req.params.id);
+		return res.status(200).json({
+			todo: todo,
+			success: true,
+			message: 'Successfully updated the todo task..!',
+			error: {},
+		});
+	} catch (error) {
+		console.log(error);
+		return res.status(500).json({
+			todo: {},
+			success: false,
+			message: 'Unable to update the todo task..!',
+			error: error,
+		});
+	}
+};
+
 module.exports = {
 	create,
 	destory,
 	getAll,
+	update,
 };

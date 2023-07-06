@@ -34,6 +34,16 @@ class TodoServices {
 			throw { error };
 		}
 	}
+
+	async updateTodo(updatedTodo, todoId) {
+		try {
+			const todo = await this.todoRepository.updataTodo(updatedTodo, todoId);
+			return todo;
+		} catch (error) {
+			console.log('Something went wrong in the service layer..!');
+			throw { error };
+		}
+	}
 }
 
 module.exports = TodoServices;

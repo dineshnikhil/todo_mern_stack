@@ -34,6 +34,20 @@ class TodoRepository {
 			throw { error };
 		}
 	}
+
+	async updataTodo(updatedTodo, todoId) {
+		try {
+			const todo = await Todo.update(updatedTodo, {
+				where: {
+					id: todoId,
+				},
+			});
+			return todo;
+		} catch (error) {
+			console.log('Something went worng in the repository layer..!');
+			throw { error };
+		}
+	}
 }
 
 module.exports = TodoRepository;
