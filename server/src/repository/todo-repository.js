@@ -24,6 +24,16 @@ class TodoRepository {
 			throw { error };
 		}
 	}
+
+	async getTodos() {
+		try {
+			const todos = await Todo.findAll();
+			return todos;
+		} catch (error) {
+			console.log('Something went worng in the repository layer..!');
+			throw { error };
+		}
+	}
 }
 
 module.exports = TodoRepository;

@@ -1,4 +1,5 @@
 const { TodoServices } = require('../services/index');
+// Create the todoServices object from the TodoServices class imported.
 const todoServices = new TodoServices();
 
 /**
@@ -49,7 +50,32 @@ const destory = async (req, res) => {
 	}
 };
 
+/**
+ * GET -> /todo
+ * Fetch all the todo tasks available in the database.
+ */
+const getAll = async (req, res) => {
+	try {
+		const todos = await todoServices.getTodos();
+		return res.status(200).json({
+			todo: todos,
+			success: true,
+			message: 'Successfully fetched the todo tasks..!',
+			error: {},
+		});
+	} catch (error) {
+		console.log(error);
+		return res.status(500).json({
+			todo: {},
+			success: false,
+			message: 'Unable to fetch the todo tasks..!',
+			error: error,
+		});
+	}
+};
+
 module.exports = {
 	create,
 	destory,
+	getAll,
 };
