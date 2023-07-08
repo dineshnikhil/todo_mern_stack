@@ -2,9 +2,11 @@ import React from 'react';
 import { useRef, useEffect, useState } from 'react';
 
 import './AddTask.css';
+import TaskCard from '../ui/TaskCard';
 
 function AddTask() {
 	const [tasks, setTasks] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
 	const title = useRef('');
 	const description = useRef('');
 
@@ -15,6 +17,7 @@ function AddTask() {
 			})
 			.then((data) => {
 				setTasks(data.todo);
+				setIsLoading(false);
 			});
 	}, []);
 
@@ -26,7 +29,32 @@ function AddTask() {
 			description: description.current.value,
 		};
 
-		console.log(data);
+		fetch('http://localhost:3000/api/v1/todo', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data),
+		})
+			.then((response) => response.json())
+			.then((responseData) => {
+				// Handle the response data
+				console.log(responseData);
+				title.current.value = '';
+				description.current.value = '';
+				fetch('http://localhost:3000/api/v1/todo')
+					.then((res) => {
+						return res.json();
+					})
+					.then((data) => {
+						setTasks(data.todo);
+						setIsLoading(false);
+					});
+			})
+			.catch((error) => {
+				// Handle any errors
+				console.error('Error:', error);
+			});
 	}
 
 	return (
@@ -39,9 +67,13 @@ function AddTask() {
 				</form>
 			</div>
 			<div>
-				{tasks.map((task) => {
-					return <h3 key={task.id}>{task.title}</h3>;
-				})}
+				{isLoading ? (
+					<h1>something happen!</h1>
+				) : (
+					tasks.map((task) => {
+						return <TaskCard key={task.id} task={task} />;
+					})
+				)}
 			</div>
 		</React.Fragment>
 	);
