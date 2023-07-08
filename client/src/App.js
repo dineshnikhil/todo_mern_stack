@@ -1,13 +1,16 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Nav from './components/ui/Nav';
+import AddTask from './components/pages/AddTask';
 
 function App() {
 	return (
-		<div className="App">
-			<header className="App-header">
-				<h1>this is just the demo for the todo app.</h1>
-			</header>
-		</div>
+		<React.Fragment>
+			<Nav />
+			<main>
+				<AddTask />
+			</main>
+		</React.Fragment>
 	);
 }
 
