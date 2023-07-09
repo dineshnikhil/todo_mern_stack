@@ -75,6 +75,30 @@ function AddTask() {
 			});
 	}
 
+	function doneTaskHandler(id) {
+		const url = `http://localhost:3000/api/v1/todo/${id}`;
+		const updatedData = {
+			completed: true,
+		};
+		fetch(url, {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(updatedData),
+		})
+			.then((response) => response.json())
+			.then((responseData) => {
+				// Handle the response data
+				fetchTodos();
+				console.log(responseData);
+			})
+			.catch((error) => {
+				// Handle any errors
+				console.error('Error:', error);
+			});
+	}
+
 	return (
 		<React.Fragment>
 			<div className="formDiv">
@@ -94,6 +118,7 @@ function AddTask() {
 								key={task.id}
 								task={task}
 								onDeleteTask={deleteTaskHandler}
+								onDoneTask={doneTaskHandler}
 							/>
 						);
 					})
