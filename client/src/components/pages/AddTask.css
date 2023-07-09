@@ -1,3 +1,8 @@
 .formDiv {
 	padding: 7% 15%;
 }
+
+.tasksDiv {
+	display: flex;
+	flex-wrap: wrap;
+}

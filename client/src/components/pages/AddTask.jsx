@@ -10,7 +10,7 @@ function AddTask() {
 	const title = useRef('');
 	const description = useRef('');
 
-	useEffect(() => {
+	function fetchTodos() {
 		fetch('http://localhost:3000/api/v1/todo')
 			.then((res) => {
 				return res.json();
@@ -19,6 +19,10 @@ function AddTask() {
 				setTasks(data.todo);
 				setIsLoading(false);
 			});
+	}
+
+	useEffect(() => {
+		fetchTodos();
 	}, []);
 
 	function formHandler(event) {
@@ -42,14 +46,28 @@ function AddTask() {
 				console.log(responseData);
 				title.current.value = '';
 				description.current.value = '';
-				fetch('http://localhost:3000/api/v1/todo')
-					.then((res) => {
-						return res.json();
-					})
-					.then((data) => {
-						setTasks(data.todo);
-						setIsLoading(false);
-					});
+				fetchTodos();
+			})
+			.catch((error) => {
+				// Handle any errors
+				console.error('Error:', error);
+			});
+	}
+
+	function deleteTaskHandler(id) {
+		const url = `http://localhost:3000/api/v1/todo/${id}`;
+		fetch(url, {
+			method: 'DELETE',
+		})
+			.then((response) => {
+				if (response.ok) {
+					// Handle success
+					fetchTodos();
+					console.log('Delete request successful');
+				} else {
+					// Handle error
+					throw new Error('Delete request failed');
+				}
 			})
 			.catch((error) => {
 				// Handle any errors
@@ -66,12 +84,18 @@ function AddTask() {
 					<button type="submit">submit</button>
 				</form>
 			</div>
-			<div>
+			<div className="tasksDiv">
 				{isLoading ? (
 					<h1>something happen!</h1>
 				) : (
 					tasks.map((task) => {
-						return <TaskCard key={task.id} task={task} />;
+						return (
+							<TaskCard
+								key={task.id}
+								task={task}
+								onDeleteTask={deleteTaskHandler}
+							/>
+						);
 					})
 				)}
 			</div>
