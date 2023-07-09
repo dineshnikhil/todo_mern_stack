@@ -9,7 +9,7 @@ function TaskCard({ task, onDeleteTask, onDoneTask }) {
 	}
 
 	function doneTask() {
-		onDoneTask(task.id);
+		onDoneTask(task);
 	}
 
 	return (
@@ -25,7 +25,7 @@ function TaskCard({ task, onDeleteTask, onDoneTask }) {
 						marginRight: '2%',
 					}}
 				>
-					Done
+					{task.completed ? 'Not Done' : 'Done'}
 				</Button>
 				<Button
 					onClick={deleteTask}

@@ -75,10 +75,10 @@ function AddTask() {
 			});
 	}
 
-	function doneTaskHandler(id) {
-		const url = `http://localhost:3000/api/v1/todo/${id}`;
+	function doneTaskHandler(task) {
+		const url = `http://localhost:3000/api/v1/todo/${task.id}`;
 		const updatedData = {
-			completed: true,
+			completed: !task.completed,
 		};
 		fetch(url, {
 			method: 'PATCH',
