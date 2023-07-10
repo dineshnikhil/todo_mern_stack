@@ -1,6 +1,10 @@
 import React from 'react';
 import { useRef, useEffect, useState } from 'react';
 
+import Card from '@mui/material/Card';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+
 import './AddTask.css';
 import TaskCard from '../ui/TaskCard';
 
@@ -102,11 +106,28 @@ function AddTask() {
 	return (
 		<React.Fragment>
 			<div className="formDiv">
-				<form onSubmit={formHandler}>
-					<input type="text" lable="titile" ref={title} />
-					<input type="text" lable="description" ref={description} />
-					<button type="submit">submit</button>
-				</form>
+				<Box m="auto">
+					<Card
+						style={{
+							padding: '5%',
+							width: '50%',
+						}}
+					>
+						<form onSubmit={formHandler}>
+							{/* <input type="text" lable="titile" ref={title} /> */}
+							<TextField
+								id="title"
+								label="titile"
+								variant="standard"
+								ref={title}
+							/>
+							<br />
+							<input type="text" lable="description" ref={description} />
+							<br />
+							<button type="submit">submit</button>
+						</form>
+					</Card>
+				</Box>
 			</div>
 			<div className="tasksDiv">
 				{isLoading ? (
