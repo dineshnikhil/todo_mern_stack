@@ -11,6 +11,20 @@ class UserRepository {
 		}
 	}
 
+	async getUser(username) {
+		try {
+			const user = await User.findOne({
+				where: {
+					username: username,
+				},
+			});
+			return user;
+		} catch (error) {
+			console.log('Something went worng in the repository layer..!');
+			throw { error };
+		}
+	}
+
 	async deleteUser(userId) {
 		try {
 			await User.destroy({

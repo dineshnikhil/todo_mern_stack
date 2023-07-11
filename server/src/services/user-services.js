@@ -1,4 +1,5 @@
 const { UserRepository } = require('../repository/index');
+const bcrypt = require('bcrypt');
 
 class UserServices {
 	constructor() {
@@ -15,6 +16,17 @@ class UserServices {
 		}
 	}
 
+	async loginUser({ username, password }) {
+		try {
+			const user = await this.userRepository.getUser(username);
+			const response = bcrypt.compareSync(password, user.password);
+			return response;
+		} catch (error) {
+			console.log('Something went worng in the service layer..!');
+			throw { error };
+		}
+	}
+
 	async deleteuser(userId) {
 		try {
 			const reponse = await this.userRepository.deleteUser(userId);
@@ -25,7 +37,7 @@ class UserServices {
 		}
 	}
 
-	async createUser(userId, userData) {
+	async updateUser(userId, userData) {
 		try {
 			const user = await this.userRepository.updateUser(userId, userData);
 			return user;
