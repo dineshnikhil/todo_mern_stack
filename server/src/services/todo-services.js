@@ -5,9 +5,14 @@ class TodoServices {
 		this.todoRepository = new TodoRepository();
 	}
 
-	async createTodo({ title, description }) {
+	async createTodo({ title, description, userId, priority }) {
 		try {
-			const todo = await this.todoRepository.createTodo({ title, description });
+			const todo = await this.todoRepository.createTodo({
+				title,
+				description,
+				userId,
+				priority,
+			});
 			return todo;
 		} catch (error) {
 			console.log('Something went wrong in the service layer..!');

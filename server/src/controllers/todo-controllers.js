@@ -9,6 +9,7 @@ const todoServices = new TodoServices();
 const create = async (req, res) => {
 	try {
 		const todo = await todoServices.createTodo(req.body);
+		// console.log(todo);
 		return res.status(201).json({
 			todo: todo,
 			success: true,

@@ -16,6 +16,18 @@ module.exports = (sequelize, DataTypes) => {
 			title: { type: DataTypes.STRING },
 			description: { type: DataTypes.STRING },
 			completed: { type: DataTypes.BOOLEAN, defaultValue: false },
+			userId: {
+				type: DataTypes.INTEGER,
+				allowNull: false,
+			},
+			priority: {
+				type: DataTypes.ENUM('Low', 'Medium', 'High', 'Urgent', 'Critical'),
+				allowNull: false,
+				defaultValue: 'Low',
+			},
+			dueDate: {
+				type: DataTypes.DATE,
+			},
 		},
 		{
 			sequelize,
