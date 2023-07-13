@@ -7,6 +7,9 @@ class UserRepository {
 			return user;
 		} catch (error) {
 			console.log('Something went worng in the repository layer..!');
+			if (error.name == 'SequelizeUniqueConstraintError') {
+				throw { error: error.errors[0].message };
+			}
 			throw { error };
 		}
 	}
