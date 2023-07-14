@@ -2,6 +2,20 @@
 
 Briefly introduce your project by providing a clear and concise title.
 
+## Table of Contents
+
+- [Project Name](#project-name)
+- [Description](#description)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Documentation](#api-documentation)
+- [File Structure](#file-structure)
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgements](#acknowledgements)
+- [Contact](#contact)
+
 ## Description
 
 Describe your project in more detail, including its purpose, functionality, and any unique features or benefits. Explain what problem your application solves or what value it brings to its users.
@@ -71,6 +85,6 @@ Specify the license under which your project is released. Choose an appropriate 
 
 Give credit to any external resources, libraries, or tutorials that you've used in your project. This section is an opportunity to express gratitude and provide attribution to the relevant contributors.
 
-## Contact
+## contact
 
 Provide your contact information, such as your email address or a link to your GitHub profile. Encourage users to reach out to you if they have any questions, feedback, or suggestions.
