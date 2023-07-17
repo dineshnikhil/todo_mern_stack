@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './SignIn.css';
 
 import { Card } from '@mui/material';
@@ -7,6 +8,8 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
 function SignUp() {
+	const navigate = useNavigate();
+
 	const username = useRef();
 	const email = useRef();
 	const password = useRef();
@@ -26,7 +29,22 @@ function SignUp() {
 			password: password.current.value,
 		};
 
-		console.log(obj);
+		fetch('http://localhost:3000/api/v1/signup', {
+			method: 'POST',
+			headers: {
+				'content-Type': 'application/json',
+			},
+			body: JSON.stringify(obj),
+		})
+			.then((response) => response.json())
+			.then((resData) => {
+				console.log(resData);
+				username.current.value = '';
+				password.current.value = '';
+				email.current.value = '';
+
+				navigate('/signin');
+			});
 	};
 
 	return (
