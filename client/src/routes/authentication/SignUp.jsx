@@ -8,6 +8,7 @@ import Button from '@mui/material/Button';
 
 function SignUp() {
 	const username = useRef();
+	const email = useRef();
 	const password = useRef();
 
 	const feildStyling = {
@@ -21,6 +22,7 @@ function SignUp() {
 
 		const obj = {
 			username: username.current.value,
+			email: email.current.value,
 			password: password.current.value,
 		};
 
@@ -41,6 +43,12 @@ function SignUp() {
 					label="Username"
 					variant="filled"
 					inputRef={username}
+				/>
+				<TextField
+					sx={feildStyling}
+					label="Email"
+					variant="filled"
+					inputRef={email}
 				/>
 				<TextField
 					sx={feildStyling}
