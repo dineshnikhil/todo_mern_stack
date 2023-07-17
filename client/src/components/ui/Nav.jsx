@@ -1,16 +1,22 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 
 function Nav() {
 	return (
 		<React.Fragment>
 			<AppBar>
 				<Toolbar>
-					<Typography variant="h6" component="div">
-						DoItNow
-					</Typography>
+					<Link to="/">
+						<h2>DoItNow</h2>
+					</Link>
+
+					<div>
+						<Link to="/signin">SignIN</Link>
+						<Link to="/signup">SignUp</Link>
+					</div>
 				</Toolbar>
 			</AppBar>
 		</React.Fragment>
