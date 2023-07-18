@@ -24,7 +24,19 @@ function SignIn() {
 			password: password.current.value,
 		};
 
-		console.log(obj);
+		fetch('http://localhost:3000/api/v1/signin', {
+			method: 'POST',
+			headers: {
+				'content-Type': 'application/json',
+			},
+			body: JSON.stringify(obj),
+		})
+			.then((response) => response.json())
+			.then((resData) => {
+				console.log(resData);
+			});
+
+		// console.log(obj);
 	};
 
 	return (

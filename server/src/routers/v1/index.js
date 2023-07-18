@@ -12,6 +12,6 @@ router.get('/todo', TodoControllers.getAll);
 router.patch('/todo/:id', TodoControllers.update);
 
 router.post('/signup', signUpRequestValidation, UserControllers.create);
-router.post('/login', UserControllers.login);
+router.post('/signin', UserControllers.login);
 
 module.exports = router;
