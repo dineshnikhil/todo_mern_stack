@@ -1,12 +1,23 @@
 import React from 'react';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import './SignIn.css';
 
 import { Card } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import ErrorPopup from '../../components/ui/errors/ErrorPopup';
 
 function SignIn() {
+	const [open, setOpen] = useState(false);
+
+	function errorOpen() {
+		setOpen(true);
+	}
+
+	function errorClose() {
+		setOpen(false);
+	}
+
 	const username = useRef();
 	const password = useRef();
 
@@ -33,46 +44,60 @@ function SignIn() {
 		})
 			.then((response) => response.json())
 			.then((resData) => {
-				console.log(resData);
+				if (!resData.login) {
+					setOpen(true);
+				}
+				console.log(resData.login);
 			});
 
 		// console.log(obj);
 	};
 
 	return (
-		<div className="signin_div">
-			<Card
-				sx={{
-					padding: '10%',
-					boxShadow: 5,
-				}}
-			>
-				<h1>Sign In</h1>
-				<TextField
-					sx={feildStyling}
-					label="Username"
-					variant="filled"
-					inputRef={username}
+		<React.Fragment>
+			{open && (
+				<ErrorPopup
+					open={open}
+					title="error one"
+					message="this is good message"
+					onHandleClose={errorClose}
+					onHandleOpen={errorOpen}
 				/>
-				<TextField
-					sx={feildStyling}
-					label="Password"
-					variant="filled"
-					inputRef={password}
-				/>
-				<Button
+			)}
+			<div className="signin_div">
+				<Card
 					sx={{
-						...feildStyling,
-						padding: '2%',
-						fontWeight: 'bold',
+						padding: '10%',
+						boxShadow: 5,
 					}}
-					variant="contained"
-					onClick={onSubmitHandler}
 				>
-					Sign In
-				</Button>
-			</Card>
-		</div>
+					<h1>Sign In</h1>
+					<TextField
+						sx={feildStyling}
+						label="Username"
+						variant="filled"
+						inputRef={username}
+					/>
+					<TextField
+						sx={feildStyling}
+						label="Password"
+						variant="filled"
+						inputRef={password}
+					/>
+					<Button
+						sx={{
+							...feildStyling,
+							padding: '2%',
+							fontWeight: 'bold',
+						}}
+						variant="contained"
+						onClick={onSubmitHandler}
+					>
+						Sign In
+					</Button>
+				</Card>
+			</div>
+		</React.Fragment>
 	);
 }
 

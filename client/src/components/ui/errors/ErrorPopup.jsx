@@ -9,15 +9,13 @@ import {
 	DialogTitle,
 } from '@mui/material';
 
-function ErrorPopup() {
-	const [open, setOpen] = useState(false); // State to control the popup
-
+function ErrorPopup({ title, message, open, onHandleOpen, onHandleClose }) {
 	const handleOpen = () => {
-		setOpen(true);
+		onHandleOpen();
 	};
 
 	const handleClose = () => {
-		setOpen(false);
+		onHandleClose();
 	};
 	return (
 		<div>
@@ -26,11 +24,9 @@ function ErrorPopup() {
 
 			{/* Dialog component for the popup */}
 			<Dialog open={open} onClose={handleClose}>
-				<DialogTitle>Error</DialogTitle>
+				<DialogTitle>{title}</DialogTitle>
 				<DialogContent>
-					<DialogContentText>
-						An error occurred. Please try again later.
-					</DialogContentText>
+					<DialogContentText>{message}</DialogContentText>
 				</DialogContent>
 				<DialogActions>
 					<Button onClick={handleClose}>Close</Button>
