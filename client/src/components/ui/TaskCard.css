@@ -1,9 +1,8 @@
 .taskCard {
-	background-color: #001c30;
-	width: 20%;
+	background-color: #32312e;
+	width: 40%;
 	border-radius: 1rem;
 
-	padding: 1%;
+	padding: 2% 4%;
 	margin: 1%;
-	color: #dafffb;
 }

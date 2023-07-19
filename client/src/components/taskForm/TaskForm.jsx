@@ -65,9 +65,15 @@ function TaskForm({ onSubmitHanlder }) {
 					<FormControl variant="filled" sx={{ ...feildStyling, minWidth: 120 }}>
 						<InputLabel>Priority</InputLabel>
 						<Select inputRef={priority}>
-							<MenuItem value="Low">Low</MenuItem>
-							<MenuItem value="Medium">Medium</MenuItem>
-							<MenuItem value="High">High</MenuItem>
+							<MenuItem value="Low" sx={{ backgroundColor: '#252422' }}>
+								Low
+							</MenuItem>
+							<MenuItem value="Medium" sx={{ backgroundColor: '#252422' }}>
+								Medium
+							</MenuItem>
+							<MenuItem value="High" sx={{ backgroundColor: '#252422' }}>
+								High
+							</MenuItem>
 						</Select>
 					</FormControl>
 
