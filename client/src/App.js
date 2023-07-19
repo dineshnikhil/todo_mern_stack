@@ -4,8 +4,8 @@ import './App.css';
 
 import SignIn from './routes/authentication/SignIn';
 import Nav from './components/ui/Nav';
-import AddTask from './components/pages/AddTask';
 import SignUp from './routes/authentication/SignUp';
+import Home from './routes/home/Home';
 
 function App() {
 	return (
@@ -13,7 +13,7 @@ function App() {
 			<Nav />
 			<main>
 				<Routes>
-					<Route path="/" element={<AddTask />} />
+					<Route path="/" element={<Home />} />
 					<Route path="/signin" element={<SignIn />} />
 					<Route path="/signup" element={<SignUp />} />
 				</Routes>
