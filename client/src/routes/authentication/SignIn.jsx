@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './SignIn.css';
 
 import { Card } from '@mui/material';
@@ -9,6 +10,12 @@ import ErrorPopup from '../../components/ui/errors/ErrorPopup';
 
 function SignIn() {
 	const [open, setOpen] = useState(false);
+	const [errorTitle, setErrorTitle] = useState('');
+	const [errorMessage, setErrorMessage] = useState('');
+
+	const username = useRef();
+	const password = useRef();
+	const navigate = useNavigate();
 
 	function errorOpen() {
 		setOpen(true);
@@ -17,9 +24,6 @@ function SignIn() {
 	function errorClose() {
 		setOpen(false);
 	}
-
-	const username = useRef();
-	const password = useRef();
 
 	const feildStyling = {
 		width: '90%',
@@ -45,9 +49,12 @@ function SignIn() {
 			.then((response) => response.json())
 			.then((resData) => {
 				if (!resData.login) {
+					setErrorTitle('Credential Error');
+					setErrorMessage('Username or Password is incorrect..!');
 					setOpen(true);
+				} else {
+					navigate('/');
 				}
-				console.log(resData.login);
 			});
 
 		// console.log(obj);
@@ -58,8 +65,8 @@ function SignIn() {
 			{open && (
 				<ErrorPopup
 					open={open}
-					title="error one"
-					message="this is good message"
+					title={errorTitle}
+					message={errorMessage}
 					onHandleClose={errorClose}
 					onHandleOpen={errorOpen}
 				/>
