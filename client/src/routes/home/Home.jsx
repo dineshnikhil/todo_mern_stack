@@ -1,12 +1,12 @@
 import React from 'react';
 
 import './Home.css';
-import TaskForm from '../../components/taskForm/TaskForm';
+import AddTask from '../../components/pages/AddTask';
 
 function Home() {
 	return (
 		<div className="homeDiv">
-			<TaskForm />
+			<AddTask />
 		</div>
 	);
 }
