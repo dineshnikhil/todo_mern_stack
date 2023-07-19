@@ -29,6 +29,7 @@ function SignIn() {
 		width: '90%',
 		margin: '2%',
 		fontSize: '1.2rem',
+		backgroundColor: '#252422',
 	};
 
 	const onSubmitHandler = (event) => {
@@ -76,6 +77,7 @@ function SignIn() {
 					sx={{
 						padding: '10%',
 						boxShadow: 5,
+						backgroundColor: '#32312E',
 					}}
 				>
 					<h1>Sign In</h1>
@@ -96,6 +98,7 @@ function SignIn() {
 							...feildStyling,
 							padding: '2%',
 							fontWeight: 'bold',
+							backgroundColor: '#EB5E28',
 						}}
 						variant="contained"
 						onClick={onSubmitHandler}

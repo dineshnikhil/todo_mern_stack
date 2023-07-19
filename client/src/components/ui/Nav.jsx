@@ -11,6 +11,7 @@ function Nav() {
 		<React.Fragment>
 			<AppBar
 				sx={{
+					backgroundColor: '#EB5E28',
 					padding: '0.5% 4%',
 				}}
 			>

@@ -19,6 +19,7 @@ function TaskForm({ onSubmitHanlder }) {
 		width: '90%',
 		margin: '2% auto',
 		fontSize: '1.2rem',
+		backgroundColor: '#252422',
 	};
 
 	function submitHandler(event) {
@@ -42,6 +43,7 @@ function TaskForm({ onSubmitHanlder }) {
 			<form>
 				<Card
 					sx={{
+						backgroundColor: '#32312E',
 						padding: '6%',
 						boxShadow: 5,
 					}}
@@ -74,6 +76,7 @@ function TaskForm({ onSubmitHanlder }) {
 							...feildStyling,
 							padding: '2%',
 							fontWeight: 'bold',
+							backgroundColor: '#EB5E28',
 						}}
 						variant="contained"
 						onClick={submitHandler}
