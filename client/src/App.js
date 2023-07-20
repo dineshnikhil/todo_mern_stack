@@ -1,7 +1,9 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { useContext } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import './App.css';
+import userContext from './store/userContext';
 
 import SignIn from './routes/authentication/SignIn';
 import Nav from './components/ui/Nav';
@@ -20,6 +22,8 @@ const theme = createTheme({
 });
 
 function App() {
+	const userCtx = useContext(userContext);
+	// console.log(userCtx);
 	return (
 		<React.Fragment>
 			<ThemeProvider theme={theme}>

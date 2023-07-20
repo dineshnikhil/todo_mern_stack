@@ -1,7 +1,9 @@
 import React from 'react';
 import { useRef, useState } from 'react';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SignIn.css';
+import userContext from '../../store/userContext';
 
 import { Card } from '@mui/material';
 import TextField from '@mui/material/TextField';
@@ -12,6 +14,8 @@ function SignIn() {
 	const [open, setOpen] = useState(false);
 	const [errorTitle, setErrorTitle] = useState('');
 	const [errorMessage, setErrorMessage] = useState('');
+
+	const userCtx = useContext(userContext);
 
 	const username = useRef();
 	const password = useRef();
@@ -55,6 +59,8 @@ function SignIn() {
 					setOpen(true);
 				} else {
 					navigate('/');
+					userCtx.loginUser();
+					console.log(userCtx);
 				}
 			});
 
