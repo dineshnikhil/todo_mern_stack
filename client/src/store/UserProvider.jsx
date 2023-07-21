@@ -8,21 +8,16 @@ function UserProvider({ children }) {
 		username: '',
 		todos: [],
 		loginUser: loginUser,
+		logoutUser: logoutUser,
 	});
 
 	function loginUser() {
 		setUserInfo({ ...userInfo, logedIn: true });
 	}
 
-	console.log(userInfo);
-
-	// const UserContext = {
-	// 	logedIn: state.logedIn,
-	// 	username: state.username,
-	// 	todos: state.todos,
-	// 	something: 'new',
-	// 	loginUser: logHandler,
-	// };
+	function logoutUser() {
+		setUserInfo({ ...userInfo, logedIn: false });
+	}
 
 	return (
 		<userContext.Provider value={userInfo}>{children}</userContext.Provider>
