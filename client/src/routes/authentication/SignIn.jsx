@@ -60,7 +60,6 @@ function SignIn() {
 				} else {
 					navigate('/');
 					userCtx.loginUser();
-					console.log(userCtx);
 				}
 			});
 

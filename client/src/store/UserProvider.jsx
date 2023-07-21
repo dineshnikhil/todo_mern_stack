@@ -1,42 +1,32 @@
 import React from 'react';
-import { useReducer } from 'react';
+import { useState } from 'react';
 import userContext from './userContext';
 
-const defaultUserContex = {
-	logedIn: false,
-	username: 'dinesh',
-	todos: [],
-	loginUser: () => {},
-};
-
-const userReducer = (state, action) => {
-	if (action.type === 'login') {
-		console.log(state);
-	}
-};
-
 function UserProvider({ children }) {
-	const [state, dispatch] = useReducer(userReducer, { count: 1213 });
+	const [userInfo, setUserInfo] = useState({
+		logedIn: false,
+		username: '',
+		todos: [],
+		loginUser: loginUser,
+	});
 
-	function logHandler() {
-		dispatch({ type: 'login' });
+	function loginUser() {
+		setUserInfo({ ...userInfo, logedIn: true });
 	}
 
-	// console.log(state);
+	console.log(userInfo);
 
 	// const UserContext = {
 	// 	logedIn: state.logedIn,
 	// 	username: state.username,
 	// 	todos: state.todos,
+	// 	something: 'new',
 	// 	loginUser: logHandler,
 	// };
 
-	const obj = {
-		countfromObj: state.count,
-		loginUser: logHandler,
-	};
-
-	return <userContext.Provider value={obj}>{children}</userContext.Provider>;
+	return (
+		<userContext.Provider value={userInfo}>{children}</userContext.Provider>
+	);
 }
 
 export default UserProvider;
