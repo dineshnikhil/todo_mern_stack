@@ -5,6 +5,8 @@ const cors = require('cors');
 const { PORT } = require('./config/serverConfig');
 const ApiRoutes = require('./routers/index');
 
+const db = require('./models/index');
+
 const create_and_run_server = () => {
 	const app = express();
 
@@ -16,6 +18,10 @@ const create_and_run_server = () => {
 
 	app.listen(PORT, () => {
 		console.log('Server is running at port: ', PORT);
+
+		if (false) {
+			db.sequelize.sync({ alert: true });
+		}
 	});
 };
 

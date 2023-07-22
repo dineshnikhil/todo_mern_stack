@@ -11,7 +11,6 @@ import userContext from '../../store/userContext';
 
 function Nav() {
 	const userCtx = useContext(userContext);
-	console.log(userCtx.logedIn);
 	return (
 		<React.Fragment>
 			<AppBar
@@ -28,7 +27,9 @@ function Nav() {
 					</div>
 					{userCtx.logedIn ? (
 						<div>
-							<button type="button">LogOut</button>
+							<button type="button" onClick={userCtx.logoutUser}>
+								LogOut
+							</button>
 						</div>
 					) : (
 						<div>
