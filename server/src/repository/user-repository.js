@@ -54,6 +54,17 @@ class UserRepository {
 			throw { error };
 		}
 	}
+
+	async getUserTodos(id) {
+		try {
+			const user = await User.findByPk(id);
+			const todos = await user.getTodos();
+			return todos;
+		} catch (error) {
+			console.log('Something went worng in the repository layer..!');
+			throw { error };
+		}
+	}
 }
 
 module.exports = UserRepository;
