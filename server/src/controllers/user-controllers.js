@@ -33,7 +33,7 @@ const login = async (req, res) => {
 			password: req.body.password,
 		});
 		return res.status(200).json({
-			login: response,
+			user: response,
 			success: true,
 			message: 'Successfully fetched the user..!',
 			error: {},

@@ -27,17 +27,17 @@ const create_and_run_server = () => {
 
 		// t1.addUser(u1);
 
-		const userId = 5;
+		// const userId = 5;
 
-		User.findByPk(userId).then((user) => {
-			if (!user) {
-				console.log('user not found...!');
-			}
+		// User.findByPk(userId).then((user) => {
+		// 	if (!user) {
+		// 		console.log('user not found...!');
+		// 	}
 
-			user.getTodos().then((todos) => {
-				console.log(todos);
-			});
-		});
+		// 	user.getTodos().then((todos) => {
+		// 		console.log(todos);
+		// 	});
+		// });
 
 		// if (true) {
 		// 	db.sequelize.sync({ alert: true });

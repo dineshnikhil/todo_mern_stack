@@ -20,7 +20,10 @@ class UserServices {
 		try {
 			const user = await this.userRepository.getUser(username);
 			const response = bcrypt.compareSync(password, user.password);
-			return response;
+			return {
+				loginStatus: response,
+				userId: user.id,
+			};
 		} catch (error) {
 			console.log('Something went worng in the service layer..!');
 			throw { error };
