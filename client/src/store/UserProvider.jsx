@@ -10,20 +10,33 @@ function UserProvider({ children }) {
 		todos: [],
 		loginUser: loginUser,
 		logoutUser: logoutUser,
+		updateUserTodos: updateUserTodos,
 	});
 
 	function loginUser(user) {
-		setUserInfo({
-			...userInfo,
-			logedIn: true,
-			userId: user.userId,
-			username: 'dinesh',
-			todos: user.todos,
+		setUserInfo((prevState) => {
+			return {
+				...prevState,
+				logedIn: true,
+				userId: user.userId,
+				username: 'dinesh',
+				todos: user.todos,
+			};
 		});
 	}
 
 	function logoutUser() {
 		setUserInfo({ ...userInfo, logedIn: false });
+	}
+
+	function updateUserTodos(userId) {
+		fetch(`http://localhost:3000/api/v1/todo/user/${userId}`)
+			.then((response) => response.json())
+			.then((resData) => {
+				setUserInfo((prevState) => {
+					return { ...prevState, todos: resData.todos };
+				});
+			});
 	}
 
 	return (

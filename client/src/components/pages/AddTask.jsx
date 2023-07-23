@@ -20,7 +20,7 @@ function AddTask() {
 		})
 			.then((response) => response.json())
 			.then((resData) => {
-				console.log(resData);
+				userCtx.updateUserTodos(userCtx.userId);
 			});
 	}
 
