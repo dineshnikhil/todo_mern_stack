@@ -9,7 +9,18 @@ import userContext from '../../store/userContext';
 function Tasks() {
 	const userCtx = useContext(userContext);
 
-	function deleteTask() {}
+	function deleteTask(taskId) {
+		fetch(`http://localhost:3000/api/v1/todo/${taskId}`, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		})
+			.then((response) => response.json())
+			.then((resData) => {
+				userCtx.updateUserTodos(userCtx.userId);
+			});
+	}
 
 	function doneTask() {}
 
