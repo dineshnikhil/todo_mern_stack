@@ -22,7 +22,23 @@ function Tasks() {
 			});
 	}
 
-	function doneTask() {}
+	function completeTaskToggle(task) {
+		const dataToUpdate = {
+			completed: !task.completed,
+		};
+
+		fetch(`http://localhost:3000/api/v1/todo/${task.id}`, {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(dataToUpdate),
+		})
+			.then((response) => response.json())
+			.then((resData) => {
+				userCtx.updateUserTodos(userCtx.userId);
+			});
+	}
 
 	return (
 		<div className="tasksDiv">
@@ -33,7 +49,7 @@ function Tasks() {
 							key={task.id}
 							task={task}
 							onDeleteTask={deleteTask}
-							onDoneTask={doneTask}
+							onCompleteTaskToggle={completeTaskToggle}
 						/>
 					);
 				})

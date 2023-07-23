@@ -3,13 +3,13 @@ import { Button } from '@mui/material';
 
 import './TaskCard.css';
 
-function TaskCard({ task, onDeleteTask, onDoneTask }) {
+function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 	function deleteTask() {
 		onDeleteTask(task.id);
 	}
 
-	function doneTask() {
-		onDoneTask(task);
+	function completeTaskToggle() {
+		onCompleteTaskToggle(task);
 	}
 
 	return (
@@ -19,7 +19,7 @@ function TaskCard({ task, onDeleteTask, onDoneTask }) {
 			<p>Status - {task.completed ? 'Completed.!' : 'pending.!'}</p>
 			<div>
 				<Button
-					onClick={doneTask}
+					onClick={completeTaskToggle}
 					variant="contained"
 					style={{
 						marginRight: '2%',
