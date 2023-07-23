@@ -28,7 +28,6 @@ class UserServices {
 				};
 			}
 			const todos = await this.userRepository.getUserTodos(user.id);
-			console.log(todos);
 			return {
 				loginStatus: response,
 				userId: user.id,
@@ -54,6 +53,16 @@ class UserServices {
 		try {
 			const user = await this.userRepository.updateUser(userId, userData);
 			return user;
+		} catch (error) {
+			console.log('Something went worng in the service layer..!');
+			throw { error };
+		}
+	}
+
+	async getUserTodos(userId) {
+		try {
+			const todos = await this.userRepository.getUserTodos(userId);
+			return todos;
 		} catch (error) {
 			console.log('Something went worng in the service layer..!');
 			throw { error };
