@@ -5,6 +5,7 @@ import userContext from './userContext';
 function UserProvider({ children }) {
 	const [userInfo, setUserInfo] = useState({
 		logedIn: false,
+		userId: -1,
 		username: '',
 		todos: [],
 		loginUser: loginUser,
@@ -15,6 +16,7 @@ function UserProvider({ children }) {
 		setUserInfo({
 			...userInfo,
 			logedIn: true,
+			userId: user.userId,
 			username: 'dinesh',
 			todos: user.todos,
 		});
