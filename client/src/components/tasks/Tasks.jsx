@@ -1,27 +1,13 @@
 import React from 'react';
+import { useContext } from 'react';
 
-import { useState, useEffect } from 'react';
 import './Tasks.css';
 import TaskCard from '../ui/TaskCard';
 
+import userContext from '../../store/userContext';
+
 function Tasks() {
-	const [todos, setTodos] = useState([]);
-	const [isLoaded, setIsLoaded] = useState(false);
-
-	function getTodos() {
-		fetch('http://localhost:3000/api/v1/todo')
-			.then((response) => {
-				return response.json();
-			})
-			.then((resData) => {
-				setTodos(resData.todo);
-				setIsLoaded(true);
-			});
-	}
-
-	useEffect(() => {
-		getTodos();
-	}, []);
+	const userCtx = useContext(userContext);
 
 	function deleteTask() {}
 
@@ -29,8 +15,8 @@ function Tasks() {
 
 	return (
 		<div className="tasksDiv">
-			{isLoaded ? (
-				todos.map((task) => {
+			{userCtx.todos.length ? (
+				userCtx.todos.map((task) => {
 					return (
 						<TaskCard
 							key={task.id}
@@ -41,7 +27,7 @@ function Tasks() {
 					);
 				})
 			) : (
-				<h1>loading...</h1>
+				<h1>no tasks there..!</h1>
 			)}
 		</div>
 	);
