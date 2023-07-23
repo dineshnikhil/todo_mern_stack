@@ -53,13 +53,13 @@ function SignIn() {
 		})
 			.then((response) => response.json())
 			.then((resData) => {
-				if (!resData.login) {
+				if (!resData.user.loginStatus) {
 					setErrorTitle('Credential Error');
 					setErrorMessage('Username or Password is incorrect..!');
 					setOpen(true);
 				} else {
 					navigate('/');
-					userCtx.loginUser();
+					userCtx.loginUser(resData.user);
 				}
 			});
 

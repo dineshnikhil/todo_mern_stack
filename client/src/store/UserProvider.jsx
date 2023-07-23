@@ -11,8 +11,13 @@ function UserProvider({ children }) {
 		logoutUser: logoutUser,
 	});
 
-	function loginUser() {
-		setUserInfo({ ...userInfo, logedIn: true });
+	function loginUser(user) {
+		setUserInfo({
+			...userInfo,
+			logedIn: true,
+			username: 'dinesh',
+			todos: user.todos,
+		});
 	}
 
 	function logoutUser() {
