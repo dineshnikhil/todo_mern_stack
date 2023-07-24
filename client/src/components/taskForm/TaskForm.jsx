@@ -73,22 +73,29 @@ function TaskForm({ onSubmitHanlder }) {
 						}}
 					/>
 
-					<FormControl
-						variant="filled"
-						sx={{ ...feildStyling, minWidth: 120 }}
-						fullWidth
-					>
-						<InputLabel>Priority</InputLabel>
-						<Select inputRef={priority}>
-							<MenuItem value="Low" sx={{ backgroundColor: '#252422' }}>
-								Low
-							</MenuItem>
-							<MenuItem value="Medium" sx={{ backgroundColor: '#252422' }}>
-								Medium
-							</MenuItem>
-							<MenuItem value="High" sx={{ backgroundColor: '#252422' }}>
-								High
-							</MenuItem>
+					<FormControl variant="filled" sx={{ ...feildStyling }} fullWidth>
+						<InputLabel
+							style={{
+								color: '#EB5E28', // Set the color of the label text to any desired color
+								// You can add more styles as needed (e.g., fontSize, fontWeight, etc.)
+							}}
+						>
+							Priority
+						</InputLabel>
+						<Select
+							inputRef={priority}
+							MenuProps={{
+								// Style the expanded section here
+								PaperProps: {
+									style: {
+										backgroundColor: '#252422', // Set the background color of the expanded section
+									},
+								},
+							}}
+						>
+							<MenuItem value="Low">Low</MenuItem>
+							<MenuItem value="Medium">Medium</MenuItem>
+							<MenuItem value="High">High</MenuItem>
 						</Select>
 					</FormControl>
 

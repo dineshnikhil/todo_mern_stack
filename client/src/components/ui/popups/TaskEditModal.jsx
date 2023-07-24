@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRef } from 'react';
+import { useRef, useContext } from 'react';
 
 import {
 	Button,
@@ -9,10 +9,19 @@ import {
 	DialogTitle,
 	TextField,
 } from '@mui/material';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+
+import userContext from '../../../store/userContext';
 
 function TaskEditModal({ task, open, onCloseHandler }) {
 	const title = useRef();
 	const description = useRef();
+	const priority = useRef();
+
+	const userCtx = useContext(userContext);
 
 	const feildStyling = {
 		margin: '2% auto',
@@ -25,13 +34,24 @@ function TaskEditModal({ task, open, onCloseHandler }) {
 	}
 
 	function onSave() {
-		const obj = {
+		const dataToUpdate = {
 			title: title.current.value,
 			description: description.current.value,
+			priority: priority.current.value,
 		};
 
-		console.log(obj);
-		onCloseHandler();
+		fetch(`http://localhost:3000/api/v1/todo/${task.id}`, {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(dataToUpdate),
+		})
+			.then((response) => response.json())
+			.then((resData) => {
+				userCtx.updateUserTodos(userCtx.userId);
+				onCloseHandler();
+			});
 	}
 
 	return (
@@ -80,6 +100,25 @@ function TaskEditModal({ task, open, onCloseHandler }) {
 						},
 					}}
 				/>
+				<FormControl variant="filled" sx={{ ...feildStyling }} fullWidth>
+					<InputLabel>Priority</InputLabel>
+					<Select
+						inputRef={priority}
+						defaultValue={task.priority}
+						MenuProps={{
+							// Style the expanded section here
+							PaperProps: {
+								style: {
+									backgroundColor: '#252422', // Set the background color of the expanded section
+								},
+							},
+						}}
+					>
+						<MenuItem value="Low">Low</MenuItem>
+						<MenuItem value="Medium">Medium</MenuItem>
+						<MenuItem value="High">High</MenuItem>
+					</Select>
+				</FormControl>
 			</DialogContent>
 			<DialogActions>
 				<Button onClick={onClose} color="primary">
