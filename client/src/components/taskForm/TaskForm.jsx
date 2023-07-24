@@ -19,6 +19,7 @@ function TaskForm({ onSubmitHanlder }) {
 		margin: '2% auto',
 		fontSize: '1.2rem',
 		backgroundColor: '#252422',
+		borderRadius: '.5rem',
 	};
 
 	function submitHandler(event) {
@@ -43,6 +44,7 @@ function TaskForm({ onSubmitHanlder }) {
 				<Card
 					sx={{
 						backgroundColor: '#32312E',
+						borderRadius: '1rem',
 						padding: '6%',
 						boxShadow: 5,
 					}}
