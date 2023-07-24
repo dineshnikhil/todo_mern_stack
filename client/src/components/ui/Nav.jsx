@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
+import { Button } from '@mui/material';
 
 import './Nav.css';
 
@@ -15,7 +16,7 @@ function Nav() {
 		<React.Fragment>
 			<AppBar
 				sx={{
-					backgroundColor: '#EB5E28',
+					backgroundColor: '#32312E',
 					padding: '0.5% 4%',
 				}}
 			>
@@ -26,10 +27,18 @@ function Nav() {
 						</Link>
 					</div>
 					{userCtx.logedIn ? (
-						<div>
-							<button type="button" onClick={userCtx.logoutUser}>
-								LogOut
-							</button>
+						<div className="navActionDiv">
+							<h1>{userCtx.username}</h1>
+							<div>
+								<Button
+									sx={{ marginTop: '20%' }}
+									variant="contained"
+									type="button"
+									onClick={userCtx.logoutUser}
+								>
+									LogOut
+								</Button>
+							</div>
 						</div>
 					) : (
 						<div>

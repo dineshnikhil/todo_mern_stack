@@ -9,6 +9,15 @@
 	box-shadow: 5px;
 }
 
+.titleDiv {
+	display: flex;
+	justify-content: space-between;
+}
+
+.titleDiv h3 {
+	color: #eb5e28;
+}
+
 .actionsDiv {
 	display: flex;
 	justify-content: space-between;

@@ -34,9 +34,10 @@ function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 				/>
 			)}
 			<div className="taskCard">
-				<h1>
-					{task.title} - {task.priority}
-				</h1>
+				<div className="titleDiv">
+					<h1>{task.title}</h1>
+					<h3>{task.priority}</h3>
+				</div>
 				<h3>{task.description}</h3>
 				<p>Status - {task.completed ? 'Completed.!' : 'pending.!'}</p>
 				<div className="actionsDiv">

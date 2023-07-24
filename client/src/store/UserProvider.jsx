@@ -13,13 +13,13 @@ function UserProvider({ children }) {
 		updateUserTodos: updateUserTodos,
 	});
 
-	function loginUser(user) {
+	function loginUser(user, username) {
 		setUserInfo((prevState) => {
 			return {
 				...prevState,
 				logedIn: true,
 				userId: user.userId,
-				username: 'dinesh',
+				username: username,
 				todos: user.todos,
 			};
 		});

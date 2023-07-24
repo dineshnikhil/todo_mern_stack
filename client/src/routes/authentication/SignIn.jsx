@@ -58,8 +58,8 @@ function SignIn() {
 					setErrorMessage('Username or Password is incorrect..!');
 					setOpen(true);
 				} else {
+					userCtx.loginUser(resData.user, username.current.value);
 					navigate('/');
-					userCtx.loginUser(resData.user);
 				}
 			});
 
