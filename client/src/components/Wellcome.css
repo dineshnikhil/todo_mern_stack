@@ -1,3 +1,31 @@
 .wellcomeDiv {
+	display: flex;
+	justify-content: space-around;
 	padding: 7% 15%;
+}
+
+.wellcomeDiv div {
+	width: 50%;
+}
+
+.wellcomeDiv p {
+	opacity: 0.5;
+	font-size: 1.3rem;
+	line-height: 1.5;
+}
+
+.wellcomeDiv div img {
+	width: 60%;
+	height: auto;
+	display: block;
+	margin: auto auto;
+}
+
+.wellcomeActionDiv {
+	width: 100%;
+}
+
+.actionLink {
+	padding: 0;
+	margin-right: 2%;
 }

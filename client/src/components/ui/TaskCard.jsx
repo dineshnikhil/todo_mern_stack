@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 
 import { Button } from '@mui/material';
+import { Card } from '@mui/material';
 import Fab from '@mui/material/Fab';
 
 import './TaskCard.css';
@@ -35,7 +36,16 @@ function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 					onCloseHandler={onCloseHandler}
 				/>
 			)}
-			<div className="taskCard">
+			<Card
+				sx={{
+					backgroundColor: '#32312E',
+					borderRadius: '1rem',
+					width: '40%',
+					padding: '2% 4%',
+					margin: '1%',
+					boxShadow: 5,
+				}}
+			>
 				<div className="titleDiv">
 					<h2>{task.title}</h2>
 					<h3>{task.priority}</h3>
@@ -101,7 +111,7 @@ function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 						</Button>
 					</div>
 				</div>
-			</div>
+			</Card>
 		</>
 	);
 }
