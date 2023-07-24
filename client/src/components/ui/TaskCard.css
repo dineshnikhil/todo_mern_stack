@@ -8,3 +8,12 @@
 
 	box-shadow: 5px;
 }
+
+.actionsDiv {
+	display: flex;
+	justify-content: space-between;
+}
+
+.actionsDiv div:nth-child(1) {
+	width: 80%;
+}
