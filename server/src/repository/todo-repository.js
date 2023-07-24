@@ -51,6 +51,17 @@ class TodoRepository {
 			throw { error };
 		}
 	}
+
+	async getThisTodoUser(todoId) {
+		const todo = await Todo.findByPk(todoId);
+		const users = await todo.getUsers();
+		const updatedUsersArray = [];
+		users.forEach((user) => {
+			updatedUsersArray.push(user.username);
+		});
+
+		return updatedUsersArray;
+	}
 }
 
 module.exports = TodoRepository;

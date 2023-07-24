@@ -41,12 +41,16 @@ function Nav() {
 							</div>
 						</div>
 					) : (
-						<div>
+						<div className="navActionDiv">
 							<Link to="/signin" className="navLink">
-								SignIN
+								<Button sx={{ marginTop: '20%' }} variant="contained">
+									SignIn
+								</Button>
 							</Link>
 							<Link to="/signup" className="navLink">
-								SignUp
+								<Button sx={{ marginTop: '20%' }} variant="contained">
+									SignUp
+								</Button>
 							</Link>
 						</div>
 					)}

@@ -1,9 +1,10 @@
-const { UserRepository } = require('../repository/index');
+const { UserRepository, TodoRepository } = require('../repository/index');
 const bcrypt = require('bcrypt');
 
 class UserServices {
 	constructor() {
 		this.userRepository = new UserRepository();
+		this.todoRepository = new TodoRepository();
 	}
 
 	async createUser(data) {
@@ -28,10 +29,11 @@ class UserServices {
 				};
 			}
 			const todos = await this.userRepository.getUserTodos(user.id);
+			const updatedTodos = await this.updateTodos(todos);
 			return {
 				loginStatus: response,
 				userId: user.id,
-				todos: todos,
+				todos: updatedTodos,
 			};
 		} catch (error) {
 			console.log('Something went worng in the service layer..!');
@@ -67,6 +69,17 @@ class UserServices {
 			console.log('Something went worng in the service layer..!');
 			throw { error };
 		}
+	}
+
+	async updateTodos(todos) {
+		const updatedTodosArray = [];
+		const promises = todos.map(async (todo) => {
+			const usersOfTodo = await this.todoRepository.getThisTodoUser(todo.id);
+			updatedTodosArray.push({ ...todo.dataValues, users: usersOfTodo });
+		});
+
+		await Promise.all(promises); // Wait for all async operations to complete
+		return updatedTodosArray;
 	}
 }
 

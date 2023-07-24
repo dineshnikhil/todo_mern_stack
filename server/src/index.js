@@ -20,22 +20,21 @@ const create_and_run_server = () => {
 	app.listen(PORT, async () => {
 		console.log('Server is running at port: ', PORT);
 
-		// const t1 = await Todo.findByPk(31);
-		// const u1 = await User.findByPk(5);
-
-		// // console.log(t1);
+		// const t1 = await Todo.findByPk(37);
+		// const u1 = await User.findByPk(20);
 
 		// t1.addUser(u1);
 
-		// const userId = 5;
-
-		// User.findByPk(userId).then((user) => {
-		// 	if (!user) {
-		// 		console.log('user not found...!');
+		// Todo.findByPk(37).then((todo) => {
+		// 	if (!todo) {
+		// 		console.log('todo not found..!');
 		// 	}
 
-		// 	user.getTodos().then((todos) => {
-		// 		console.log(todos);
+		// 	todo.getUsers().then((users) => {
+		// 		users.forEach((user) => {
+		// 			console.log(user.username);
+		// 		});
+		// 		// console.log(users[0].username);
 		// 	});
 		// });
 
