@@ -18,6 +18,7 @@ function Wellcome() {
 							sx={{
 								fontSize: '1.1rem',
 								fontWeight: 'bold',
+								padding: '4% 0',
 							}}
 							variant="contained"
 							fullWidth

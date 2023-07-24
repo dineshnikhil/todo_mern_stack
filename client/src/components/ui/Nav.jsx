@@ -31,7 +31,7 @@ function Nav() {
 							<h1>{userCtx.username}</h1>
 							<div>
 								<Button
-									sx={{ marginTop: '20%' }}
+									sx={{ marginTop: '20%', fontWeight: 'bold' }}
 									variant="contained"
 									type="button"
 									onClick={userCtx.logoutUser}
@@ -43,12 +43,20 @@ function Nav() {
 					) : (
 						<div className="navActionDiv">
 							<Link to="/signin" className="navLink">
-								<Button sx={{ marginTop: '20%' }} variant="contained">
+								<Button
+									sx={{ fontWeight: 'bold', padding: '10% 0' }}
+									variant="contained"
+									fullWidth
+								>
 									SignIn
 								</Button>
 							</Link>
 							<Link to="/signup" className="navLink">
-								<Button sx={{ marginTop: '20%' }} variant="contained">
+								<Button
+									sx={{ fontWeight: 'bold', padding: '10% 0' }}
+									variant="contained"
+									fullWidth
+								>
 									SignUp
 								</Button>
 							</Link>
