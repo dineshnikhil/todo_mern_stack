@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRef } from 'react';
 
 import {
 	Button,
@@ -9,34 +10,75 @@ import {
 	TextField,
 } from '@mui/material';
 
-function TaskEditModal({ open, onCloseHandler }) {
+function TaskEditModal({ task, open, onCloseHandler }) {
+	const title = useRef();
+	const description = useRef();
+
+	const feildStyling = {
+		margin: '2% auto',
+		fontSize: '1.2rem',
+		backgroundColor: '#252422',
+	};
+
 	function onClose() {
 		onCloseHandler();
 	}
 
-	function onSave() {}
+	function onSave() {
+		const obj = {
+			title: title.current.value,
+			description: description.current.value,
+		};
+
+		console.log(obj);
+		onCloseHandler();
+	}
+
 	return (
-		<Dialog open={open} onClose={onClose} aria-labelledby="form-dialog-title">
-			<DialogTitle id="form-dialog-title">Edit Task</DialogTitle>
+		<Dialog
+			open={open}
+			onClose={onClose}
+			aria-labelledby="form-dialog-title"
+			PaperProps={{
+				style: {
+					backgroundColor: '#32312E', // Set the background color to any desired color
+				},
+			}}
+		>
+			<DialogTitle
+				id="form-dialog-title"
+				sx={{
+					color: '#252422',
+				}}
+			>
+				Edit Task
+			</DialogTitle>
 			<DialogContent>
 				<TextField
-					autoFocus
-					margin="dense"
-					name="title"
+					sx={feildStyling}
 					label="Title"
+					variant="filled"
 					fullWidth
-					//   value={editedTask.title}
-					//   onChange={handleInputChange}
+					defaultValue={task.title}
+					inputRef={title}
+					InputLabelProps={{
+						style: {
+							color: '#EB5E28', // Set the color of the label text to any desired color
+						},
+					}}
 				/>
 				<TextField
-					margin="dense"
-					name="description"
+					sx={feildStyling}
 					label="Description"
+					variant="filled"
 					fullWidth
-					multiline
-					rows={4}
-					//   value={editedTask.description}
-					//   onChange={handleInputChange}
+					defaultValue={task.description}
+					inputRef={description}
+					InputLabelProps={{
+						style: {
+							color: '#EB5E28', // Set the color of the label text to any desired color
+						},
+					}}
 				/>
 			</DialogContent>
 			<DialogActions>

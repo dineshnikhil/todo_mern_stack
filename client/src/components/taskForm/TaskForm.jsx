@@ -16,7 +16,6 @@ function TaskForm({ onSubmitHanlder }) {
 	const priority = useRef();
 
 	const feildStyling = {
-		width: '90%',
 		margin: '2% auto',
 		fontSize: '1.2rem',
 		backgroundColor: '#252422',
@@ -53,16 +52,32 @@ function TaskForm({ onSubmitHanlder }) {
 						sx={feildStyling}
 						label="Title"
 						variant="filled"
+						fullWidth
 						inputRef={title}
+						InputLabelProps={{
+							style: {
+								color: '#EB5E28', // Set the color of the label text to any desired color
+							},
+						}}
 					/>
 					<TextField
 						sx={feildStyling}
 						label="Description"
 						variant="filled"
+						fullWidth
 						inputRef={description}
+						InputLabelProps={{
+							style: {
+								color: '#EB5E28', // Set the color of the label text to any desired color
+							},
+						}}
 					/>
 
-					<FormControl variant="filled" sx={{ ...feildStyling, minWidth: 120 }}>
+					<FormControl
+						variant="filled"
+						sx={{ ...feildStyling, minWidth: 120 }}
+						fullWidth
+					>
 						<InputLabel>Priority</InputLabel>
 						<Select inputRef={priority}>
 							<MenuItem value="Low" sx={{ backgroundColor: '#252422' }}>
@@ -85,6 +100,7 @@ function TaskForm({ onSubmitHanlder }) {
 							backgroundColor: '#EB5E28',
 						}}
 						variant="contained"
+						fullWidth
 						onClick={submitHandler}
 					>
 						Add Task

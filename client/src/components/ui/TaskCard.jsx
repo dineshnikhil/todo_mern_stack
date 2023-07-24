@@ -26,7 +26,13 @@ function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 
 	return (
 		<>
-			{open && <TaskEditModal open={open} onCloseHandler={onCloseHandler} />}
+			{open && (
+				<TaskEditModal
+					task={task}
+					open={open}
+					onCloseHandler={onCloseHandler}
+				/>
+			)}
 			<div className="taskCard">
 				<h1>{task.title}</h1>
 				<h3>{task.description}</h3>
