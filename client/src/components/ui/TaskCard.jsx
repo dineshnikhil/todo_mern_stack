@@ -54,7 +54,7 @@ function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 					content="Once deleted, you will not be able to recover this task."
 					openUndo={openUndo}
 					closeUndo={closeUndo}
-					deleteTask={deleteTask}
+					action={deleteTask}
 				/>
 			)}
 			<Card
@@ -68,7 +68,7 @@ function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 				}}
 			>
 				<div className="titleDiv">
-					<h2>{task.title}</h2>
+					<h2>➡️ {task.title}</h2>
 					<h3>{task.priority}</h3>
 				</div>
 				<div className="todoUsersDiv">
@@ -96,7 +96,7 @@ function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 					})}
 				</div>
 				<h3>{task.description}</h3>
-				<p>Status - {task.completed ? 'Completed.!' : 'pending.!'}</p>
+				<p>{task.completed ? '✅ Completed.!' : '⌛ pending.!'}</p>
 
 				<div className="actionsDiv">
 					<div>

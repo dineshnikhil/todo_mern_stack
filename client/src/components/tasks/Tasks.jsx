@@ -20,9 +20,6 @@ function Tasks() {
 			.then((resData) => {
 				userCtx.updateUserTodos(userCtx.userId);
 			});
-		// userCtx.deleteUserTask(taskId);
-		// console.log(taskId);
-		// userCtx.deleteUserTodo(taskId);
 	}
 
 	function completeTaskToggle(task) {
@@ -44,22 +41,51 @@ function Tasks() {
 	}
 
 	return (
-		<div className="tasksDiv">
-			{userCtx.todos.length ? (
-				userCtx.todos.map((task) => {
-					return (
-						<TaskCard
-							key={task.id}
-							task={task}
-							onDeleteTask={deleteTask}
-							onCompleteTaskToggle={completeTaskToggle}
-						/>
-					);
-				})
-			) : (
-				<h1>no tasks there..!</h1>
-			)}
-		</div>
+		<>
+			<div>
+				<h2>⌛ Progressing tasks.</h2>
+				<div className="tasksDiv">
+					{userCtx.todos.length ? (
+						userCtx.todos
+							.filter((task) => !task.completed)
+							.map((task) => {
+								return (
+									<TaskCard
+										key={task.id}
+										task={task}
+										onDeleteTask={deleteTask}
+										onCompleteTaskToggle={completeTaskToggle}
+									/>
+								);
+							})
+					) : (
+						<h1>no tasks there..!</h1>
+					)}
+				</div>
+			</div>
+			<hr />
+			<div>
+				<h2>✅ Completed tasks.</h2>
+				<div className="tasksDiv">
+					{userCtx.todos.length ? (
+						userCtx.todos
+							.filter((task) => task.completed)
+							.map((task) => {
+								return (
+									<TaskCard
+										key={task.id}
+										task={task}
+										onDeleteTask={deleteTask}
+										onCompleteTaskToggle={completeTaskToggle}
+									/>
+								);
+							})
+					) : (
+						<h1>no tasks there..!</h1>
+					)}
+				</div>
+			</div>
+		</>
 	);
 }
 

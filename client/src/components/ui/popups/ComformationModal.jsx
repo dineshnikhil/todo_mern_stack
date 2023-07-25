@@ -8,15 +8,9 @@ import {
 	DialogTitle,
 } from '@mui/material';
 
-function ComformationModal({
-	title,
-	content,
-	openUndo,
-	closeUndo,
-	deleteTask,
-}) {
-	function deleteHandler() {
-		deleteTask();
+function ComformationModal({ title, content, openUndo, closeUndo, action }) {
+	function actionHandler() {
+		action();
 		closeUndo();
 	}
 	return (
@@ -56,8 +50,8 @@ function ComformationModal({
 				<Button onClick={closeUndo} color="primary" variant="contained">
 					Cancel
 				</Button>
-				<Button onClick={deleteHandler} color="primary" variant="outlined">
-					Delete
+				<Button onClick={actionHandler} color="primary" variant="outlined">
+					Yeap!
 				</Button>
 			</DialogActions>
 		</Dialog>

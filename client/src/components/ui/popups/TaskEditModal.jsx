@@ -64,6 +64,8 @@ function TaskEditModal({ task, open, onCloseHandler }) {
 					backgroundColor: '#32312E', // Set the background color to any desired color
 				},
 			}}
+			maxWidth="md"
+			fullWidth
 		>
 			<DialogTitle
 				id="form-dialog-title"
