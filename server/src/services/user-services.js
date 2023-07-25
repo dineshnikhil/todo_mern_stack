@@ -64,7 +64,8 @@ class UserServices {
 	async getUserTodos(userId) {
 		try {
 			const todos = await this.userRepository.getUserTodos(userId);
-			return todos;
+			const updatedTodos = await this.updateTodos(todos);
+			return updatedTodos;
 		} catch (error) {
 			console.log('Something went worng in the service layer..!');
 			throw { error };
