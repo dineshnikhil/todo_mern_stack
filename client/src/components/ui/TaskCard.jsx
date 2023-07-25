@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { Button } from '@mui/material';
 import { Card } from '@mui/material';
@@ -7,9 +7,25 @@ import Fab from '@mui/material/Fab';
 
 import './TaskCard.css';
 import TaskEditModal from './popups/TaskEditModal';
+import UndoSnakbar from './snakbars/UndoSnakbar';
 
 function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 	const [open, setOpen] = useState(false);
+	const [openUndo, setOpenUndo] = useState(false);
+
+	useEffect(() => {
+		var timer;
+		if (openUndo) {
+			timer = setTimeout(() => {
+				console.log('task delted..!');
+				onDeleteTask(task.id);
+				setOpenUndo(true);
+			}, 3000);
+		} else {
+			console.log('task not deleted..!');
+		}
+		return () => clearTimeout(timer);
+	}, [openUndo]);
 
 	function onCloseHandler() {
 		setOpen(false);
@@ -20,7 +36,12 @@ function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 	}
 
 	function deleteTask() {
-		onDeleteTask(task.id);
+		setOpenUndo(true);
+		// onDeleteTask(task.id);
+	}
+
+	function closeUndo() {
+		setOpenUndo(false);
 	}
 
 	function completeTaskToggle() {
@@ -36,6 +57,7 @@ function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 					onCloseHandler={onCloseHandler}
 				/>
 			)}
+			{openUndo && <UndoSnakbar openUndo={openUndo} closeUndo={closeUndo} />}
 			<Card
 				sx={{
 					backgroundColor: '#32312E',

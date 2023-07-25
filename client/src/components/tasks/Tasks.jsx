@@ -1,5 +1,5 @@
-import React from 'react';
-import { useContext } from 'react';
+import React, { useEffect } from 'react';
+import { useState, useContext } from 'react';
 
 import './Tasks.css';
 import TaskCard from '../ui/TaskCard';
@@ -20,6 +20,9 @@ function Tasks() {
 			.then((resData) => {
 				userCtx.updateUserTodos(userCtx.userId);
 			});
+		// userCtx.deleteUserTask(taskId);
+		// console.log(taskId);
+		// userCtx.deleteUserTodo(taskId);
 	}
 
 	function completeTaskToggle(task) {

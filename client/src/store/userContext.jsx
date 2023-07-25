@@ -5,6 +5,8 @@ const userContext = React.createContext({
 	username: '',
 	todos: [],
 	loginUser: () => {},
+	logoutUser: () => {},
+	updateUserTodos: () => {},
 });
 
 export default userContext;
