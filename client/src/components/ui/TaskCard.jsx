@@ -50,6 +50,8 @@ function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 			{/* {openUndo && <UndoSnakbar openUndo={openUndo} closeUndo={closeUndo} />} */}
 			{openUndo && (
 				<ComformationModal
+					title="Delete Task"
+					content="Once deleted, you will not be able to recover this task."
 					openUndo={openUndo}
 					closeUndo={closeUndo}
 					deleteTask={deleteTask}

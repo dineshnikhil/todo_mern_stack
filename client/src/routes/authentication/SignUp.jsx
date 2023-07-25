@@ -39,7 +39,6 @@ function SignUp() {
 		})
 			.then((response) => response.json())
 			.then((resData) => {
-				console.log(resData);
 				username.current.value = '';
 				password.current.value = '';
 				email.current.value = '';

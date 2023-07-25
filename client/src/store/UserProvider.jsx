@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
+
 import userContext from './userContext';
+import sortArray from '../utils/sortArray';
 
 function UserProvider({ children }) {
 	const [userInfo, setUserInfo] = useState({
@@ -14,13 +16,14 @@ function UserProvider({ children }) {
 	});
 
 	function loginUser(user, username) {
+		var updatedTdos = sortArray(user.todos);
 		setUserInfo((prevState) => {
 			return {
 				...prevState,
 				logedIn: true,
 				userId: user.userId,
 				username: username,
-				todos: user.todos,
+				todos: updatedTdos,
 			};
 		});
 	}
@@ -34,7 +37,7 @@ function UserProvider({ children }) {
 			.then((response) => response.json())
 			.then((resData) => {
 				setUserInfo((prevState) => {
-					return { ...prevState, todos: resData.todos };
+					return { ...prevState, todos: sortArray(resData.todos) };
 				});
 			});
 	}

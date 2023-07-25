@@ -8,7 +8,13 @@ import {
 	DialogTitle,
 } from '@mui/material';
 
-function ComformationModal({ openUndo, closeUndo, deleteTask }) {
+function ComformationModal({
+	title,
+	content,
+	openUndo,
+	closeUndo,
+	deleteTask,
+}) {
 	function deleteHandler() {
 		deleteTask();
 		closeUndo();
@@ -23,6 +29,8 @@ function ComformationModal({ openUndo, closeUndo, deleteTask }) {
 					backgroundColor: '#32312E', // Set the background color to any desired color
 				},
 			}}
+			maxWidth="md"
+			fullWidth
 		>
 			<DialogTitle
 				id="form-dialog-title"
@@ -31,10 +39,14 @@ function ComformationModal({ openUndo, closeUndo, deleteTask }) {
 					color: '#ffffff',
 				}}
 			>
-				Edit Task
+				{title}
 			</DialogTitle>
-			<DialogContent>
-				<h2>Do You want to delete it..!</h2>
+			<DialogContent
+				sx={{
+					padding: '10% auto',
+				}}
+			>
+				<p>{content}</p>
 			</DialogContent>
 			<DialogActions
 				sx={{
