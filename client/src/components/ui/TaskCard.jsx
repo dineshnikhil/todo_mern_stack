@@ -8,24 +8,23 @@ import Fab from '@mui/material/Fab';
 import './TaskCard.css';
 import TaskEditModal from './popups/TaskEditModal';
 import UndoSnakbar from './snakbars/UndoSnakbar';
+import ComformationModal from './popups/ComformationModal';
 
 function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 	const [open, setOpen] = useState(false);
 	const [openUndo, setOpenUndo] = useState(false);
 
-	useEffect(() => {
-		var timer;
-		if (openUndo) {
-			timer = setTimeout(() => {
-				console.log('task delted..!');
-				onDeleteTask(task.id);
-				setOpenUndo(true);
-			}, 3000);
-		} else {
-			console.log('task not deleted..!');
-		}
-		return () => clearTimeout(timer);
-	}, [openUndo]);
+	function deleteTask() {
+		onDeleteTask(task.id);
+	}
+
+	function openUndoModle() {
+		setOpenUndo(true);
+	}
+
+	function closeUndo() {
+		setOpenUndo(false);
+	}
 
 	function onCloseHandler() {
 		setOpen(false);
@@ -33,15 +32,6 @@ function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 
 	function onOpenHandler() {
 		setOpen(true);
-	}
-
-	function deleteTask() {
-		setOpenUndo(true);
-		// onDeleteTask(task.id);
-	}
-
-	function closeUndo() {
-		setOpenUndo(false);
 	}
 
 	function completeTaskToggle() {
@@ -57,7 +47,14 @@ function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 					onCloseHandler={onCloseHandler}
 				/>
 			)}
-			{openUndo && <UndoSnakbar openUndo={openUndo} closeUndo={closeUndo} />}
+			{/* {openUndo && <UndoSnakbar openUndo={openUndo} closeUndo={closeUndo} />} */}
+			{openUndo && (
+				<ComformationModal
+					openUndo={openUndo}
+					closeUndo={closeUndo}
+					deleteTask={deleteTask}
+				/>
+			)}
 			<Card
 				sx={{
 					backgroundColor: '#32312E',
@@ -87,8 +84,7 @@ function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 									backgroundColor: '#252422',
 									color: '#ffffff',
 									'&:hover': {
-										backgroundColor: '#1b1b1a', // Set the background color on hover
-										// You can add more styles here for hover effect as needed
+										backgroundColor: '#1b1b1a',
 									},
 								}}
 							>
@@ -112,7 +108,7 @@ function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 							{task.completed ? 'Not Done' : 'Done'}
 						</Button>
 						<Button
-							onClick={deleteTask}
+							onClick={openUndoModle}
 							variant="contained"
 							style={{
 								marginRight: '2%',

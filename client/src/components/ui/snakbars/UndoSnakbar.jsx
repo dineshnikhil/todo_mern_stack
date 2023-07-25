@@ -2,6 +2,7 @@ import React from 'react';
 
 import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
 
 function UndoSnakbar({ openUndo, closeUndo }) {
 	const action = (
@@ -12,8 +13,13 @@ function UndoSnakbar({ openUndo, closeUndo }) {
 		</React.Fragment>
 	);
 
+	function handleSnackbarClickAway(event) {
+		event.stopPropagation();
+	}
+
 	return (
-		<div>
+		<div onMouseDown={handleSnackbarClickAway}>
+			{/* <ClickAwayListener onClickAway={handleSnackbarClickAway}> */}
 			<Snackbar
 				open={openUndo}
 				autoHideDuration={3000}
@@ -21,6 +27,7 @@ function UndoSnakbar({ openUndo, closeUndo }) {
 				message="Dont want to Delete the Task..!"
 				action={action}
 			/>
+			{/* </ClickAwayListener> */}
 		</div>
 	);
 }

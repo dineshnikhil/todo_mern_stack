@@ -68,7 +68,7 @@ function TaskEditModal({ task, open, onCloseHandler }) {
 			<DialogTitle
 				id="form-dialog-title"
 				sx={{
-					color: '#252422',
+					color: '#ffffff',
 				}}
 			>
 				Edit Task
@@ -120,11 +120,15 @@ function TaskEditModal({ task, open, onCloseHandler }) {
 					</Select>
 				</FormControl>
 			</DialogContent>
-			<DialogActions>
-				<Button onClick={onClose} color="primary">
+			<DialogActions
+				sx={{
+					padding: '3% 6%',
+				}}
+			>
+				<Button onClick={onClose} color="primary" variant="outlined">
 					Cancel
 				</Button>
-				<Button onClick={onSave} color="primary">
+				<Button onClick={onSave} color="primary" variant="contained">
 					Save
 				</Button>
 			</DialogActions>
