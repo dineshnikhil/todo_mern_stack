@@ -20,10 +20,11 @@ const create_and_run_server = () => {
 	app.listen(PORT, async () => {
 		console.log('Server is running at port: ', PORT);
 
-		// const t1 = await Todo.findByPk(39);
-		// const u1 = await User.findByPk(21);
+		// const t1 = await Todo.findByPk(74);
+		// const u1 = await User.findByPk(7);
 
-		// t1.addUser(u1);
+		// const result = await t1.removeUser(u1);
+		// console.log(result);
 
 		// if (true) {
 		// 	db.sequelize.sync({ alert: true });

@@ -59,6 +59,19 @@ class TodoServices {
 			throw { error };
 		}
 	}
+
+	async removeUserToTodo(todoId, userId) {
+		try {
+			const response = await this.todoRepository.removeUserFromTodo(
+				todoId,
+				userId
+			);
+			return response;
+		} catch (error) {
+			console.log('Something went wrong in the service layer..!');
+			throw { error };
+		}
+	}
 }
 
 module.exports = TodoServices;

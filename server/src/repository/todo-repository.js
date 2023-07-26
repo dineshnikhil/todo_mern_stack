@@ -70,6 +70,14 @@ class TodoRepository {
 		const result = await todo.addUser(user);
 		return result;
 	}
+
+	async removeUserFromTodo(todoId, userId) {
+		const todo = await Todo.findByPk(todoId);
+		const user = await User.findByPk(userId);
+
+		const result = await todo.removeUser(user);
+		return result;
+	}
 }
 
 module.exports = TodoRepository;

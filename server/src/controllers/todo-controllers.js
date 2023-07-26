@@ -99,6 +99,9 @@ const update = async (req, res) => {
 	}
 };
 
+/**
+ * POST -> /todo/user/?todoId=''&userId=''
+ */
 const addUser = async (req, res) => {
 	try {
 		const response = await todoServices.addUserToTodo(
@@ -122,10 +125,37 @@ const addUser = async (req, res) => {
 	}
 };
 
+/**
+ * DELETE -> /todo/user/?todoId=''&userId=''
+ */
+const removeUser = async (req, res) => {
+	try {
+		const response = await todoServices.removeUserToTodo(
+			req.query.todoId,
+			req.query.userId
+		);
+		return res.status(200).json({
+			response: response,
+			success: true,
+			message: 'Successfully removed the user from the todo..!',
+			error: {},
+		});
+	} catch (error) {
+		console.log(error);
+		return res.status(500).json({
+			todo: {},
+			success: false,
+			message: 'Unable to remove user from the todo task..!',
+			error: error,
+		});
+	}
+};
+
 module.exports = {
 	create,
 	destory,
 	getAll,
 	update,
 	addUser,
+	removeUser,
 };

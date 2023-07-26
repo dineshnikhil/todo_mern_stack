@@ -9,6 +9,7 @@ import './TaskCard.css';
 import TaskEditModal from './popups/TaskEditModal';
 import ComformationModal from './popups/ComformationModal';
 import AddUserToTask from './popups/AddUserToTask';
+import TaskUserBlock from './TaskUserBlock';
 
 function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 	const [open, setOpen] = useState(false);
@@ -98,25 +99,7 @@ function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 						<Button onClick={openAddUserToTask}>Add User</Button>
 					</div>
 					{task.users.map((user) => {
-						return (
-							<Fab
-								variant="extended"
-								size="small" // You can change the size to 'small', 'medium', or 'large'
-								sx={{
-									fontSize: '.8rem',
-									padding: '2%',
-									marginRight: '1%',
-									borderRadius: '.5rem',
-									backgroundColor: '#252422',
-									color: '#ffffff',
-									'&:hover': {
-										backgroundColor: '#1b1b1a',
-									},
-								}}
-							>
-								{user}
-							</Fab>
-						);
+						return <TaskUserBlock user={user} />;
 					})}
 				</div>
 				<h3>{task.description}</h3>
