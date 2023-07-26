@@ -23,13 +23,42 @@ function ErrorPopup({ title, message, open, onHandleOpen, onHandleClose }) {
 			<Button onClick={handleOpen}>Show Error Popup</Button>
 
 			{/* Dialog component for the popup */}
-			<Dialog open={open} onClose={handleClose}>
-				<DialogTitle>{title}</DialogTitle>
-				<DialogContent>
-					<DialogContentText>{message}</DialogContentText>
+			<Dialog
+				open={open}
+				onClose={handleClose}
+				aria-labelledby="form-dialog-title"
+				PaperProps={{
+					style: {
+						backgroundColor: '#32312E', // Set the background color to any desired color
+					},
+				}}
+				maxWidth="md"
+				fullWidth
+			>
+				<DialogTitle
+					sx={{
+						backgroundColor: '#252422',
+						color: '#ffffff',
+					}}
+				>
+					{title}
+				</DialogTitle>
+				<DialogContent
+					sx={{
+						padding: '10% auto',
+						color: '#ffffff',
+					}}
+				>
+					<p>{message}</p>
 				</DialogContent>
-				<DialogActions>
-					<Button onClick={handleClose}>Close</Button>
+				<DialogActions
+					sx={{
+						padding: '3% 6%',
+					}}
+				>
+					<Button onClick={handleClose} variant="contained">
+						Close
+					</Button>
 				</DialogActions>
 			</Dialog>
 		</div>

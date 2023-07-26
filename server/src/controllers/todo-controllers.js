@@ -99,9 +99,33 @@ const update = async (req, res) => {
 	}
 };
 
+const addUser = async (req, res) => {
+	try {
+		const response = await todoServices.addUserToTodo(
+			req.query.todoId,
+			req.query.userId
+		);
+		return res.status(200).json({
+			response: response,
+			success: true,
+			message: 'Successfully added the user to the todo..!',
+			error: {},
+		});
+	} catch (error) {
+		console.log(error);
+		return res.status(500).json({
+			todo: {},
+			success: false,
+			message: 'Unable to add user to the todo task..!',
+			error: error,
+		});
+	}
+};
+
 module.exports = {
 	create,
 	destory,
 	getAll,
 	update,
+	addUser,
 };

@@ -25,19 +25,6 @@ const create_and_run_server = () => {
 
 		// t1.addUser(u1);
 
-		// Todo.findByPk(37).then((todo) => {
-		// 	if (!todo) {
-		// 		console.log('todo not found..!');
-		// 	}
-
-		// 	todo.getUsers().then((users) => {
-		// 		users.forEach((user) => {
-		// 			console.log(user.username);
-		// 		});
-		// 		// console.log(users[0].username);
-		// 	});
-		// });
-
 		// if (true) {
 		// 	db.sequelize.sync({ alert: true });
 		// }

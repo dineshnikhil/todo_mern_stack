@@ -52,7 +52,7 @@ class TodoRepository {
 		}
 	}
 
-	async getThisTodoUser(todoId) {
+	async getThisTodoUsers(todoId) {
 		const todo = await Todo.findByPk(todoId);
 		const users = await todo.getUsers();
 		const updatedUsersArray = [];
@@ -61,6 +61,14 @@ class TodoRepository {
 		});
 
 		return updatedUsersArray;
+	}
+
+	async addUserToTodo(todoId, userId) {
+		const todo = await Todo.findByPk(todoId);
+		const user = await User.findByPk(userId);
+
+		const result = await todo.addUser(user);
+		return result;
 	}
 }
 

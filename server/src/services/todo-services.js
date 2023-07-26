@@ -49,6 +49,16 @@ class TodoServices {
 			throw { error };
 		}
 	}
+
+	async addUserToTodo(todoId, userId) {
+		try {
+			const response = await this.todoRepository.addUserToTodo(todoId, userId);
+			return response;
+		} catch (error) {
+			console.log('Something went wrong in the service layer..!');
+			throw { error };
+		}
+	}
 }
 
 module.exports = TodoServices;

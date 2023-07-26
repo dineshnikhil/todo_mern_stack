@@ -73,9 +73,10 @@ class UserServices {
 	}
 
 	async updateTodos(todos) {
+		// this function will add the all the associated users to the perticular task.
 		const updatedTodosArray = [];
 		const promises = todos.map(async (todo) => {
-			const usersOfTodo = await this.todoRepository.getThisTodoUser(todo.id);
+			const usersOfTodo = await this.todoRepository.getThisTodoUsers(todo.id);
 			updatedTodosArray.push({ ...todo.dataValues, users: usersOfTodo });
 		});
 

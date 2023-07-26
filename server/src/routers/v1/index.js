@@ -13,6 +13,8 @@ router.patch('/todo/:id', TodoControllers.update);
 
 router.post('/signup', signUpRequestValidation, UserControllers.create);
 router.post('/signin', UserControllers.login);
+
 router.get('/todo/user/:id', UserControllers.getUserTodos);
+router.post('/todo/user/', TodoControllers.addUser);
 
 module.exports = router;
