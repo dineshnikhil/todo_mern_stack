@@ -8,12 +8,17 @@ import userContext from '../../store/userContext';
 function TaskUserBlock({ user, taskId }) {
 	const userCtx = useContext(userContext);
 
+	const myButtonStyling = {
+		marginLeft: '10px',
+		backgroundColor: '#252422',
+		color: 'white',
+		border: 'none',
+	};
+
 	function removeUser() {
-		console.log(user, taskId);
 		fetch(`http://localhost:3000/api/v1/user/${user}`)
 			.then((response) => response.json())
 			.then((data) => {
-				console.log(data.data.data.userId);
 				fetch(
 					`http://localhost:3000/api/v1/todo/user/?todoId=${taskId}&userId=${data.data.data.userId}`,
 					{
@@ -48,8 +53,14 @@ function TaskUserBlock({ user, taskId }) {
 				},
 			}}
 		>
-			{user}
-			<button onClick={removeUser}>X</button>
+			{user === userCtx.username ? 'me' : user}
+			<button
+				style={myButtonStyling}
+				onClick={removeUser}
+				hidden={user === userCtx.username}
+			>
+				X
+			</button>
 		</Fab>
 	);
 }
