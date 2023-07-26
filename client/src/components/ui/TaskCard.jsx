@@ -7,13 +7,15 @@ import Fab from '@mui/material/Fab';
 
 import './TaskCard.css';
 import TaskEditModal from './popups/TaskEditModal';
-import UndoSnakbar from './snakbars/UndoSnakbar';
 import ComformationModal from './popups/ComformationModal';
+import AddUserToTask from './popups/AddUserToTask';
 
 function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 	const [open, setOpen] = useState(false);
 	const [openUndo, setOpenUndo] = useState(false);
+	const [openAddUser, setOpenAddUser] = useState(false);
 
+	// ============= handlers of the delete popup ======================
 	function deleteTask() {
 		onDeleteTask(task.id);
 	}
@@ -25,7 +27,9 @@ function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 	function closeUndo() {
 		setOpenUndo(false);
 	}
+	// ==================================================================
 
+	// ============= handlers of the edit popup =========================
 	function onCloseHandler() {
 		setOpen(false);
 	}
@@ -33,9 +37,19 @@ function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 	function onOpenHandler() {
 		setOpen(true);
 	}
+	// ==================================================================
 
 	function completeTaskToggle() {
 		onCompleteTaskToggle(task);
+	}
+
+	// ============== handlers of the add user to task ==================
+	function openAddUserToTask() {
+		setOpenAddUser(true);
+	}
+
+	function closeAddUserToTask() {
+		setOpenAddUser(false);
 	}
 
 	return (
@@ -57,6 +71,13 @@ function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 					action={deleteTask}
 				/>
 			)}
+			{openAddUser && (
+				<AddUserToTask
+					open={openAddUser}
+					onClose={closeAddUserToTask}
+					taskId={task.id}
+				/>
+			)}
 			<Card
 				sx={{
 					backgroundColor: '#32312E',
@@ -72,7 +93,10 @@ function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 					<h3>{task.priority}</h3>
 				</div>
 				<div className="todoUsersDiv">
-					<h3>Users</h3>
+					<div>
+						<h3>Users</h3>
+						<Button onClick={openAddUserToTask}>Add User</Button>
+					</div>
 					{task.users.map((user) => {
 						return (
 							<Fab
