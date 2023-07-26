@@ -99,7 +99,7 @@ function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 						<Button onClick={openAddUserToTask}>Add User</Button>
 					</div>
 					{task.users.map((user) => {
-						return <TaskUserBlock user={user} />;
+						return <TaskUserBlock user={user} taskId={task.id} />;
 					})}
 				</div>
 				<h3>{task.description}</h3>
