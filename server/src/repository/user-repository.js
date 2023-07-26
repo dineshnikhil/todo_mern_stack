@@ -21,7 +21,16 @@ class UserRepository {
 					username: username,
 				},
 			});
-			return user;
+			if (!user) {
+				return {
+					userFound: false,
+					data: {},
+				};
+			}
+			return {
+				userFound: true,
+				data: user,
+			};
 		} catch (error) {
 			console.log('Something went worng in the repository layer..!');
 			throw { error };

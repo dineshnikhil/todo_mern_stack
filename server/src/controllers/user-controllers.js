@@ -69,8 +69,29 @@ const getUserTodos = async (req, res) => {
 	}
 };
 
+const findUser = async (req, res) => {
+	try {
+		const data = await userServices.getUser(req.params.username);
+		return res.status(200).json({
+			data: data,
+			success: true,
+			message: 'user was found..!',
+			error: {},
+		});
+	} catch (error) {
+		console.log(error);
+		return res.status(500).json({
+			todos: [],
+			success: false,
+			message: 'Unable to fetch the todos of the user..!',
+			error: error,
+		});
+	}
+};
+
 module.exports = {
 	create,
 	login,
 	getUserTodos,
+	findUser,
 };
