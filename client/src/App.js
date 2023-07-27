@@ -1,6 +1,10 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+
 import './App.css';
 
 import SignIn from './routes/authentication/SignIn';
@@ -24,18 +28,20 @@ const theme = createTheme({
 function App() {
 	return (
 		<React.Fragment>
-			<UserProvider>
-				<ThemeProvider theme={theme}>
-					<Nav />
-					<main>
-						<Routes>
-							<Route path="/" element={<Home />} />
-							<Route path="/signin" element={<SignIn />} />
-							<Route path="/signup" element={<SignUp />} />
-						</Routes>
-					</main>
-				</ThemeProvider>
-			</UserProvider>
+			<LocalizationProvider dateAdapter={AdapterDayjs}>
+				<UserProvider>
+					<ThemeProvider theme={theme}>
+						<Nav />
+						<main>
+							<Routes>
+								<Route path="/" element={<Home />} />
+								<Route path="/signin" element={<SignIn />} />
+								<Route path="/signup" element={<SignUp />} />
+							</Routes>
+						</main>
+					</ThemeProvider>
+				</UserProvider>
+			</LocalizationProvider>
 		</React.Fragment>
 	);
 }

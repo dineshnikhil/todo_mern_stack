@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import { Button } from '@mui/material';
 import { Card } from '@mui/material';
@@ -92,6 +92,10 @@ function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 			>
 				<div>
 					<p>🕛 Created at : {dateFormater(task.createdAt)}</p>
+					<p>
+						Due Date :{' '}
+						{task.dueDate ? dateFormater(task.dueDate) : 'Not Choosed!'}
+					</p>
 				</div>
 				<div className="titleDiv">
 					<h2>➡️ {task.title}</h2>

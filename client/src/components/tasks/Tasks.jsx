@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useState, useContext } from 'react';
+import React from 'react';
+import { useContext } from 'react';
 
 import './Tasks.css';
 import TaskCard from '../ui/TaskCard';

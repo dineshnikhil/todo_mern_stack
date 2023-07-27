@@ -13,6 +13,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 
 import userContext from '../../../store/userContext';
 
@@ -20,6 +21,7 @@ function TaskEditModal({ task, open, onCloseHandler }) {
 	const title = useRef();
 	const description = useRef();
 	const priority = useRef();
+	const endDate = useRef();
 
 	const userCtx = useContext(userContext);
 
@@ -38,6 +40,7 @@ function TaskEditModal({ task, open, onCloseHandler }) {
 			title: title.current.value,
 			description: description.current.value,
 			priority: priority.current.value,
+			dueDate: new Date(endDate.current.value),
 		};
 
 		fetch(`http://localhost:3000/api/v1/todo/${task.id}`, {
@@ -122,6 +125,11 @@ function TaskEditModal({ task, open, onCloseHandler }) {
 						<MenuItem value="High">High</MenuItem>
 					</Select>
 				</FormControl>
+				<DateTimePicker
+					sx={feildStyling}
+					label="Pick your task end date"
+					inputRef={endDate}
+				/>
 			</DialogContent>
 			<DialogActions
 				sx={{
