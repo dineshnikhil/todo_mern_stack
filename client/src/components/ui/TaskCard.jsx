@@ -5,6 +5,7 @@ import { Button } from '@mui/material';
 import { Card } from '@mui/material';
 
 import dateFormater from '../../utils/dateFormater';
+import daysLeftToFinishTask from '../../utils/remainingDays';
 
 import './TaskCard.css';
 import TaskEditModal from './popups/TaskEditModal';
@@ -90,12 +91,15 @@ function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 					boxShadow: 5,
 				}}
 			>
-				<div>
+				<div className="timeDiv">
 					<p>🕛 Created at : {dateFormater(task.createdAt)}</p>
 					<p>
-						Due Date :{' '}
-						{task.dueDate ? dateFormater(task.dueDate) : 'Not Choosed!'}
+						Days left :{' '}
+						{task.dueDate
+							? daysLeftToFinishTask(task.createdAt, task.dueDate)
+							: 'nope!'}
 					</p>
+					<p>Due Date : {task.dueDate ? dateFormater(task.dueDate) : '---'}</p>
 				</div>
 				<div className="titleDiv">
 					<h2>➡️ {task.title}</h2>

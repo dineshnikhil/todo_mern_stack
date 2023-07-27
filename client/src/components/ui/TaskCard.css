@@ -47,3 +47,8 @@
 	display: flex;
 	justify-content: space-between;
 }
+
+.timeDiv {
+	display: flex;
+	justify-content: space-between;
+}

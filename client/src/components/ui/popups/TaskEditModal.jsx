@@ -129,6 +129,12 @@ function TaskEditModal({ task, open, onCloseHandler }) {
 					sx={feildStyling}
 					label="Pick your task end date"
 					inputRef={endDate}
+					style={{
+						expanded: {
+							backgroundColor: 'red',
+							padding: '10px',
+						},
+					}}
 				/>
 			</DialogContent>
 			<DialogActions
