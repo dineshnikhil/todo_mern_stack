@@ -55,6 +55,7 @@ function TaskForm({ onSubmitHanlder }) {
 						label="Title"
 						variant="filled"
 						fullWidth
+						required
 						inputRef={title}
 						InputLabelProps={{
 							style: {
@@ -67,6 +68,7 @@ function TaskForm({ onSubmitHanlder }) {
 						label="Description"
 						variant="filled"
 						fullWidth
+						required
 						inputRef={description}
 						InputLabelProps={{
 							style: {

@@ -94,22 +94,26 @@ function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 				}}
 			>
 				<div className="timeDiv">
-					<p>🕛 Created at : {dateFormater(task.createdAt)}</p>
+					<p>🚀 {dateFormater(task.createdAt)}</p>
 					<p>
-						Days left :{' '}
+						⏲{' '}
 						{task.dueDate
 							? daysLeftToFinishTask(todayDate, task.dueDate)
-							: 'nope!'}
+							: 'nope!'}{' '}
+						days left
 					</p>
-					<p>Due Date : {task.dueDate ? dateFormater(task.dueDate) : '---'}</p>
+					<p>🏁 {task.dueDate ? dateFormater(task.dueDate) : '---'}</p>
 				</div>
+				<p className="taskStatusPara">
+					{task.completed ? '✅ Completed.!' : '⌛ pending.!'}
+				</p>
 				<div className="titleDiv">
-					<h2>➡️ {task.title}</h2>
+					<h2>📔 {task.title}</h2>
 					<h3>{task.priority}</h3>
 				</div>
 				<div className="todoUsersDiv">
 					<div>
-						<h3>Users</h3>
+						<h3>🤕 Users</h3>
 						<Button onClick={openAddUserToTask}>Add User</Button>
 					</div>
 					{task.users.map((user) => {
@@ -117,7 +121,6 @@ function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 					})}
 				</div>
 				<h3>{task.description}</h3>
-				<p>{task.completed ? '✅ Completed.!' : '⌛ pending.!'}</p>
 
 				<div className="actionsDiv">
 					<div>
@@ -137,7 +140,7 @@ function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 								marginRight: '2%',
 							}}
 						>
-							Delete
+							🔥 Delete
 						</Button>
 					</div>
 					<div>

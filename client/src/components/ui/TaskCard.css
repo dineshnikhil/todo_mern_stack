@@ -52,3 +52,11 @@
 	display: flex;
 	justify-content: space-between;
 }
+
+.timeDiv p {
+	margin: 0;
+}
+
+.taskStatusPara {
+	margin: 3% 0;
+}

@@ -5,7 +5,7 @@ function dateFormater(date) {
 	const day = dateObj.getDate();
 	const year = dateObj.getFullYear();
 
-	const formatedDate = monthString + ' ' + day + ' ' + year;
+	const formatedDate = monthString + ' ' + day + ', ' + year;
 	return formatedDate;
 }
 
