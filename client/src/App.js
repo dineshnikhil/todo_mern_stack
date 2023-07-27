@@ -13,6 +13,7 @@ import SignUp from './routes/authentication/SignUp';
 import Home from './routes/home/Home';
 
 import UserProvider from './store/UserProvider';
+import UserPage from './routes/User/UserPage';
 
 const theme = createTheme({
 	palette: {
@@ -20,7 +21,7 @@ const theme = createTheme({
 			main: '#EB5E28',
 		},
 		text: {
-			primary: '#ffffff',
+			primary: '#dee2e6',
 		},
 	},
 });
@@ -37,6 +38,7 @@ function App() {
 								<Route path="/" element={<Home />} />
 								<Route path="/signin" element={<SignIn />} />
 								<Route path="/signup" element={<SignUp />} />
+								<Route path="/user" element={<UserPage />} />
 							</Routes>
 						</main>
 					</ThemeProvider>

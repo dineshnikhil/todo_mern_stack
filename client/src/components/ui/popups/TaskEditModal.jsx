@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRef, useContext } from 'react';
+import dayjs from 'dayjs';
 
 import {
 	Button,
@@ -24,6 +25,11 @@ function TaskEditModal({ task, open, onCloseHandler }) {
 	const endDate = useRef();
 
 	const userCtx = useContext(userContext);
+
+	var defaultDate = null;
+	if (task.dueDate) {
+		defaultDate = dayjs(new Date(task.dueDate));
+	}
 
 	const feildStyling = {
 		margin: '2% auto',
@@ -128,10 +134,12 @@ function TaskEditModal({ task, open, onCloseHandler }) {
 				<DateTimePicker
 					sx={feildStyling}
 					label="Pick your task end date"
+					value={defaultDate}
 					inputRef={endDate}
 					style={{
 						expanded: {
 							backgroundColor: 'red',
+							color: 'black',
 							padding: '10px',
 						},
 					}}

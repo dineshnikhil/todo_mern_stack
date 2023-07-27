@@ -28,7 +28,9 @@ function Nav() {
 					</div>
 					{userCtx.logedIn ? (
 						<div className="navActionDiv">
-							<h1>{userCtx.username}</h1>
+							<Link to="/user">
+								<h1>{userCtx.username}</h1>
+							</Link>
 							<div>
 								<Button
 									sx={{ marginTop: '20%', fontWeight: 'bold' }}

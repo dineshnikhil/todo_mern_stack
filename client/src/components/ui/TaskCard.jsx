@@ -18,6 +18,8 @@ function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 	const [openUndo, setOpenUndo] = useState(false);
 	const [openAddUser, setOpenAddUser] = useState(false);
 
+	const todayDate = new Date();
+
 	// ============= handlers of the delete popup ======================
 	function deleteTask() {
 		onDeleteTask(task.id);
@@ -96,7 +98,7 @@ function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 					<p>
 						Days left :{' '}
 						{task.dueDate
-							? daysLeftToFinishTask(task.createdAt, task.dueDate)
+							? daysLeftToFinishTask(todayDate, task.dueDate)
 							: 'nope!'}
 					</p>
 					<p>Due Date : {task.dueDate ? dateFormater(task.dueDate) : '---'}</p>
