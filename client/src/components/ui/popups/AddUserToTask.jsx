@@ -83,12 +83,17 @@ function AddUserToTask({ open, onClose, taskId }) {
 			<DialogTitle
 				id="form-dialog-title"
 				sx={{
+					backgroundColor: '#252422',
 					color: '#ffffff',
 				}}
 			>
 				Edit Task
 			</DialogTitle>
-			<DialogContent>
+			<DialogContent
+				sx={{
+					padding: '20%, 0',
+				}}
+			>
 				<div style={{ display: 'flex', justifyContent: 'space-around' }}>
 					<TextField
 						sx={feildStyling}

@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react';
 
 import { Button } from '@mui/material';
 import { Card } from '@mui/material';
-import Fab from '@mui/material/Fab';
+
+import dateFormater from '../../utils/dateFormater';
 
 import './TaskCard.css';
 import TaskEditModal from './popups/TaskEditModal';
@@ -89,6 +90,9 @@ function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 					boxShadow: 5,
 				}}
 			>
+				<div>
+					<p>🕛 Created at : {dateFormater(task.createdAt)}</p>
+				</div>
 				<div className="titleDiv">
 					<h2>➡️ {task.title}</h2>
 					<h3>{task.priority}</h3>

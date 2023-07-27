@@ -70,6 +70,7 @@ function TaskEditModal({ task, open, onCloseHandler }) {
 			<DialogTitle
 				id="form-dialog-title"
 				sx={{
+					backgroundColor: '#252422',
 					color: '#ffffff',
 				}}
 			>
