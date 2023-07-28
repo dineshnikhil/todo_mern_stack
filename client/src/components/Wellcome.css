@@ -29,3 +29,8 @@
 	padding: 0;
 	margin-right: 2%;
 }
+
+.featuresCardsDiv {
+	display: flex;
+	justify-content: space-around;
+}

@@ -8,7 +8,7 @@ import { CardActionArea } from '@mui/material';
 
 function FeatureCard({ img, title, description }) {
 	return (
-		<Card sx={{ maxWidth: 345, backgroundColor: '#252422' }}>
+		<Card sx={{ width: '24%', backgroundColor: '#252422' }}>
 			<CardActionArea>
 				<CardMedia component="img" image={img} alt="green iguana" />
 				<CardContent

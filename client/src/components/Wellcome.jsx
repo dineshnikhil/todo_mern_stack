@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 import './Wellcome.css';
 import addUserFeature from '../assets/images/addUserFeatureImg.svg';
+import taskManagementFeature from '../assets/images/taskManagementFeatureImg.svg';
+import exportDataFeature from '../assets/images/exportDataFeatureImg.svg';
 import wellcomeLogo from '../assets/images/wellcomeLogo.svg';
 
 import { Button } from '@mui/material';
@@ -45,13 +47,21 @@ function Wellcome() {
 			<div className="featuresDiv">
 				<h1>DoItNow Features</h1>
 				<div className="featuresCardsDiv">
-					<div>
-						<FeatureCard
-							title="title one"
-							description="some small one"
-							img={addUserFeature}
-						/>
-					</div>
+					<FeatureCard
+						title="Task Management"
+						description="Take control of your tasks and boost productivity with our intuitive task management feature."
+						img={taskManagementFeature}
+					/>
+					<FeatureCard
+						title="Collaborative Task Assignment"
+						description="Effortlessly collaborate and assign tasks to team members with our streamlined 'Add User to Task' feature."
+						img={addUserFeature}
+					/>
+					<FeatureCard
+						title="Seamless Todo Data Export"
+						description="Effortlessly export your todo data to CSV format, enabling seamless integration with other todo platforms."
+						img={exportDataFeature}
+					/>
 				</div>
 			</div>
 		</>
