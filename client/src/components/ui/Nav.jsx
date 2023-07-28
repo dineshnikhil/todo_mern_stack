@@ -28,7 +28,7 @@ function Nav() {
 					</div>
 					{userCtx.logedIn ? (
 						<div className="navActionDiv">
-							<Link to="/user">
+							<Link to="/user" className="userLink">
 								<h1>{userCtx.username}</h1>
 							</Link>
 							<div>
@@ -38,7 +38,7 @@ function Nav() {
 									type="button"
 									onClick={userCtx.logoutUser}
 								>
-									LogOut
+									LogOut 👋
 								</Button>
 							</div>
 						</div>

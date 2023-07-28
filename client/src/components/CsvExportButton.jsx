@@ -2,6 +2,8 @@ import React from 'react';
 
 import Papa from 'papaparse';
 
+import { Button } from '@mui/material';
+
 function CsvExportButton({ data, fileName }) {
 	const downloadCsv = () => {
 		const csv = Papa.unparse(data);
@@ -19,7 +21,11 @@ function CsvExportButton({ data, fileName }) {
 	function demo() {
 		console.log('downloadin file..!');
 	}
-	return <button onClick={downloadCsv}>Download CSV</button>;
+	return (
+		<Button onClick={downloadCsv} variant="contained">
+			Download CSV 👇
+		</Button>
+	);
 }
 
 export default CsvExportButton;

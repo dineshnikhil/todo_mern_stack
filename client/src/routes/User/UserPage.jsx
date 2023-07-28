@@ -12,10 +12,8 @@ function UserPage() {
 	return (
 		<div className="userPageDiv">
 			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias eum
-				repellendus fugiat atque ratione corporis! Sapiente ut voluptatibus
-				nobis soluta quia debitis illum velit, doloribus maxime mollitia, quas
-				earum minima!
+				Export your todo list as a CSV file to keep a backup or share it easily
+				with others.
 			</p>
 			<CsvExportButton data={userCtx.todos} fileName="data.csv" />
 		</div>

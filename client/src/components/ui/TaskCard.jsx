@@ -113,7 +113,7 @@ function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 				</div>
 				<div className="todoUsersDiv">
 					<div>
-						<h3>🤕 Users</h3>
+						<h3>Users 🤕</h3>
 						<Button onClick={openAddUserToTask}>Add User</Button>
 					</div>
 					{task.users.map((user) => {
@@ -140,7 +140,7 @@ function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 								marginRight: '2%',
 							}}
 						>
-							🔥 Delete
+							Delete 🔥
 						</Button>
 					</div>
 					<div>
