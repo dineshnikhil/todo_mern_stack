@@ -4,6 +4,7 @@
 	margin: 0 auto;
 }
 
-.signin_div h1 {
+.signin_div h1,
+h2 {
 	text-align: center;
 }

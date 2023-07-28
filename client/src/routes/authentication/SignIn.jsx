@@ -85,18 +85,33 @@ function SignIn() {
 						backgroundColor: '#32312E',
 					}}
 				>
-					<h1>Sign In</h1>
+					<h1>Welcome Back!</h1>
+					<h2>Sign In to Your 🎯DoItNow Account</h2>
+					<p>
+						Sign in and pick up where you left off, your tasks are waiting for
+						you!
+					</p>
 					<TextField
 						sx={feildStyling}
 						label="Username"
 						variant="filled"
 						inputRef={username}
+						InputLabelProps={{
+							style: {
+								color: '#EB5E28', // Set the color of the label text to any desired color
+							},
+						}}
 					/>
 					<TextField
 						sx={feildStyling}
 						label="Password"
 						variant="filled"
 						inputRef={password}
+						InputLabelProps={{
+							style: {
+								color: '#EB5E28', // Set the color of the label text to any desired color
+							},
+						}}
 					/>
 					<Button
 						sx={{
