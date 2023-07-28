@@ -1,10 +1,13 @@
 import React from 'react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import userContext from './userContext';
 import sortArray from '../utils/sortArray';
 
 function UserProvider({ children }) {
+	const navigate = useNavigate();
+
 	const [userInfo, setUserInfo] = useState({
 		logedIn: false,
 		userId: -1,
@@ -30,6 +33,7 @@ function UserProvider({ children }) {
 
 	function logoutUser() {
 		setUserInfo({ ...userInfo, logedIn: false });
+		navigate('/');
 	}
 
 	function updateUserTodos(userId) {

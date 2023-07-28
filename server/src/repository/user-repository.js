@@ -39,11 +39,12 @@ class UserRepository {
 
 	async deleteUser(userId) {
 		try {
-			await User.destroy({
+			const response = await User.destroy({
 				where: {
 					id: userId,
 				},
 			});
+			return response;
 		} catch (error) {
 			console.log('Something went worng in the repository layer..!');
 			throw { error };

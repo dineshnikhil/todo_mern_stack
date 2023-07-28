@@ -140,7 +140,7 @@ function TaskCard({ task, onDeleteTask, onCompleteTaskToggle }) {
 								marginRight: '2%',
 							}}
 						>
-							Delete 🔥
+							Delete 🗑️
 						</Button>
 					</div>
 					<div>
