@@ -30,7 +30,18 @@
 	margin-right: 2%;
 }
 
+.featuresDiv {
+	padding: 7% 15%;
+}
+
+.featuresDiv p {
+	opacity: 0.5;
+	font-size: 1.3rem;
+	line-height: 1.5;
+}
+
 .featuresCardsDiv {
 	display: flex;
 	justify-content: space-around;
+	padding: 3% 0;
 }

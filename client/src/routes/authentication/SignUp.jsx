@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './SignIn.css';
 
 import { Card } from '@mui/material';
@@ -52,28 +52,48 @@ function SignUp() {
 			<Card
 				sx={{
 					padding: '10%',
+					borderRadius: '1rem',
 					boxShadow: 5,
 					backgroundColor: '#32312E',
 				}}
 			>
-				<h1>Sign Up</h1>
+				<h1>Create Your 🎯DoItNow Account</h1>
+				<p>
+					Join the productivity revolution and unlock the full potential of your
+					tasks with a few simple steps.
+				</p>
 				<TextField
 					sx={feildStyling}
 					label="Username"
 					variant="filled"
 					inputRef={username}
+					InputLabelProps={{
+						style: {
+							color: '#EB5E28', // Set the color of the label text to any desired color
+						},
+					}}
 				/>
 				<TextField
 					sx={feildStyling}
 					label="Email"
 					variant="filled"
 					inputRef={email}
+					InputLabelProps={{
+						style: {
+							color: '#EB5E28', // Set the color of the label text to any desired color
+						},
+					}}
 				/>
 				<TextField
 					sx={feildStyling}
 					label="Password"
 					variant="filled"
 					inputRef={password}
+					InputLabelProps={{
+						style: {
+							color: '#EB5E28', // Set the color of the label text to any desired color
+						},
+					}}
 				/>
 				<Button
 					sx={{
@@ -85,8 +105,27 @@ function SignUp() {
 					variant="contained"
 					onClick={onSubmitHandler}
 				>
-					Sign In
+					Sign Up for Free 🤝
 				</Button>
+				<br />
+				<p>
+					*Already have an account? Sign in to access your tasks and take
+					control of your productivity.
+				</p>
+				<Link to="/signin">
+					<Button
+						sx={{
+							...feildStyling,
+							padding: '2%',
+							fontWeight: 'bold',
+							backgroundColor: '#EB5E28',
+						}}
+						variant="contained"
+						onClick={onSubmitHandler}
+					>
+						Sign In 🚀
+					</Button>
+				</Link>
 			</Card>
 		</div>
 	);

@@ -8,6 +8,7 @@ import { Button } from '@mui/material';
 import userContext from '../../store/userContext';
 import CsvExportButton from '../../components/CsvExportButton';
 import ComformationModal from '../../components/ui/popups/ComformationModal';
+import CustomizedAccordions from '../../components/ui/CustomizedAccordions';
 
 function UserPage() {
 	const [deleteConformation, setDeleteConformation] = useState(false);
@@ -59,6 +60,7 @@ function UserPage() {
 				<Button variant="contained" onClick={onOpenDeleteConformation}>
 					Delete Account 🗑️
 				</Button>
+				<CustomizedAccordions />
 			</div>
 		</>
 	);

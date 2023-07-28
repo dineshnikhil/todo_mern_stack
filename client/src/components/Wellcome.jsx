@@ -30,7 +30,7 @@ function Wellcome() {
 								variant="contained"
 								fullWidth
 							>
-								Sign In
+								Get Started for Free
 							</Button>
 						</Link>
 					</div>
@@ -56,10 +56,11 @@ function Wellcome() {
 						borderRadius: '1rem',
 					}}
 				>
-					<h1 style={{ fontSize: '2rem' }}>Why you Need this tool..</h1>
+					<h1 style={{ fontSize: '2rem' }}>Why you Need 🎯DoItNow</h1>
 					<Typography
 						sx={{
-							color: '#32312E',
+							color: '#252422',
+							opacity: '0.8',
 							fontSize: '1.3rem',
 							fontWeight: 'semiBold',
 						}}
@@ -79,11 +80,19 @@ function Wellcome() {
 				</Card>
 			</div>
 			<div className="featuresDiv">
-				<h1>DoItNow Features</h1>
+				<h1>Powerful Features to Supercharge Your Productivity</h1>
+				<p>
+					Experience a new level of efficiency and organization with our
+					feature-rich todo manager. From intuitive task management to seamless
+					collaboration, our cutting-edge tools are designed to simplify your
+					daily workflow and elevate your productivity. Stay in control,
+					accomplish more, and unlock your full potential with our comprehensive
+					suite of features tailored to meet your needs.
+				</p>
 				<div className="featuresCardsDiv">
 					<FeatureCard
 						title="Task Management"
-						description="Take control of your tasks and boost productivity with our intuitive task management feature."
+						description="Take control of your tasks and boost productivity with our intuitive task management feature.fsafgasdfasg"
 						img={taskManagementFeature}
 					/>
 					<FeatureCard

@@ -6,11 +6,21 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
+// EB5E28
+// 252422
 function FeatureCard({ img, title, description }) {
 	return (
-		<Card sx={{ width: '24%', backgroundColor: '#252422' }}>
+		<Card sx={{ width: '30%', backgroundColor: '#EB5E28' }}>
 			<CardActionArea>
-				<CardMedia component="img" image={img} alt="green iguana" />
+				<CardMedia
+					component="img"
+					image={img}
+					alt="green iguana"
+					sx={{
+						width: '60%',
+						margin: '5% auto',
+					}}
+				/>
 				<CardContent
 					sx={{
 						backgroundColor: '#32312E',
@@ -26,7 +36,13 @@ function FeatureCard({ img, title, description }) {
 					>
 						{title}
 					</Typography>
-					<Typography variant="body2" color="gray">
+					<Typography
+						variant="body2"
+						color="#ffffff"
+						sx={{
+							opacity: '0.5',
+						}}
+					>
 						{description}
 					</Typography>
 				</CardContent>
