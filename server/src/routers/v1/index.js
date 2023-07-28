@@ -14,6 +14,7 @@ router.get('/todo', TodoControllers.getAll);
 router.patch('/todo/:id', TodoControllers.update);
 
 router.get('/user/:username', UserControllers.findUser);
+router.delete('/user/:id', UserControllers.deleteUser);
 
 router.post('/signup', signUpRequestValidation, UserControllers.create);
 router.post('/signin', UserControllers.login);

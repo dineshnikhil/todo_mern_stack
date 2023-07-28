@@ -89,9 +89,30 @@ const findUser = async (req, res) => {
 	}
 };
 
+const deleteUser = async (req, res) => {
+	try {
+		const response = await userServices.deleteuser(req.params.id);
+		return res.status(200).json({
+			response: response,
+			success: true,
+			message: 'Successfully deleted the user..!',
+			error: {},
+		});
+	} catch (error) {
+		console.log(error);
+		return res.status(500).json({
+			response: null,
+			success: false,
+			message: 'Unable to delete the user..!!',
+			error: error,
+		});
+	}
+};
+
 module.exports = {
 	create,
 	login,
 	getUserTodos,
 	findUser,
+	deleteUser,
 };
