@@ -20,7 +20,7 @@ function Wellcome() {
 				<div>
 					<h1>Welcome to 🎯DoItNow : Your Ultimate Todo Task Manager</h1>
 					<div className="wellcomeActionDiv">
-						<Link to="/signin" className="actionLink">
+						<Link to="/signup" className="actionLink">
 							<Button
 								sx={{
 									fontSize: '1.1rem',

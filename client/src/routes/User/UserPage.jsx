@@ -3,17 +3,16 @@ import { useContext, useState } from 'react';
 
 import './UserPage.css';
 
-import { Button } from '@mui/material';
+import { Button, Card } from '@mui/material';
 
 import userContext from '../../store/userContext';
 import CsvExportButton from '../../components/CsvExportButton';
 import ComformationModal from '../../components/ui/popups/ComformationModal';
-import CustomizedAccordions from '../../components/ui/CustomizedAccordions';
+import UserDetails from './UserDetails';
 
 function UserPage() {
 	const [deleteConformation, setDeleteConformation] = useState(false);
 	const userCtx = useContext(userContext);
-	console.log(userCtx);
 
 	function onOpenDeleteConformation() {
 		setDeleteConformation(true);
@@ -51,6 +50,7 @@ function UserPage() {
 				/>
 			)}
 			<div className="userPageDiv">
+				<UserDetails />
 				<p>
 					Export your todo list as a CSV file to keep a backup or share it
 					easily with others.
@@ -60,7 +60,6 @@ function UserPage() {
 				<Button variant="contained" onClick={onOpenDeleteConformation}>
 					Delete Account 🗑️
 				</Button>
-				<CustomizedAccordions />
 			</div>
 		</>
 	);
