@@ -159,6 +159,16 @@ class UserServices {
 			throw { error };
 		}
 	}
+
+	async validateToken(token) {
+		try {
+			const validity = jwt.verify(token, JWT_KEY);
+			return validity;
+		} catch (error) {
+			console.log('Something went wrong while validating the token..!');
+			throw { error };
+		}
+	}
 }
 
 module.exports = UserServices;
