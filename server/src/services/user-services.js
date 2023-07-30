@@ -38,6 +38,7 @@ class UserServices {
 			if (!response) {
 				return {
 					loginStatus: response,
+					token: '',
 					userId: -1,
 					todos: [],
 				};

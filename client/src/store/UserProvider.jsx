@@ -32,6 +32,7 @@ function UserProvider({ children }) {
 	}
 
 	function logoutUser() {
+		window.localStorage.removeItem('Auterization');
 		setUserInfo({ ...userInfo, logedIn: false });
 		navigate('/');
 	}

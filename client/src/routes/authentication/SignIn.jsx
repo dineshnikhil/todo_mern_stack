@@ -53,13 +53,23 @@ function SignIn() {
 		})
 			.then((response) => response.json())
 			.then((resData) => {
-				if (!resData.user.loginStatus) {
-					setErrorTitle('Credential Error');
-					setErrorMessage('Username or Password is incorrect..!');
-					setOpen(true);
+				if (resData.success) {
+					if (!resData.user.loginStatus) {
+						setErrorTitle('Credential Error');
+						setErrorMessage('Password is incorrect..!');
+						setOpen(true);
+						password.current.value = '';
+					} else {
+						userCtx.loginUser(resData.user, username.current.value);
+						localStorage.setItem('Auterization', resData.user.token);
+						navigate('/');
+					}
 				} else {
-					userCtx.loginUser(resData.user, username.current.value);
-					navigate('/');
+					setErrorTitle('Credential Error');
+					setErrorMessage('User with this username not exists..!');
+					setOpen(true);
+					username.current.value = '';
+					password.current.value = '';
 				}
 			});
 
