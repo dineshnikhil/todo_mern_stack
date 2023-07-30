@@ -1,5 +1,8 @@
 const { UserRepository, TodoRepository } = require('../repository/index');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
+const { JWT_KEY } = require('../config/serverConfig');
 
 class UserServices {
 	constructor() {
@@ -40,8 +43,14 @@ class UserServices {
 				};
 			}
 			const todos = await this.getUserTodos(data.data.id);
+			// lets create the token
+			const token = await this.createToke({
+				username: data.data.username,
+				id: data.data.id,
+			});
 			return {
 				loginStatus: response,
+				token: token,
 				userId: data.data.id,
 				todos: todos,
 			};
@@ -137,6 +146,16 @@ class UserServices {
 			};
 		} catch (error) {
 			console.log('Something went worng in the service layer..!');
+			throw { error };
+		}
+	}
+
+	async createToke(userData) {
+		try {
+			const token = jwt.sign(userData, JWT_KEY, { expiresIn: '1h' });
+			return token;
+		} catch (error) {
+			console.log('Something went wrong while creating the token..!');
 			throw { error };
 		}
 	}
