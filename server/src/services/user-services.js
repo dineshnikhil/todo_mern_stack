@@ -7,7 +7,10 @@ class UserServices {
 		this.todoRepository = new TodoRepository();
 	}
 
-	// this will create the new user
+	/**
+	 * This function will create the new user with username, email and password
+	 * STEP1 => it simplet create the user from repository layer.
+	 */
 	async createUser(data) {
 		try {
 			const user = await this.userRepository.createUser(data);
@@ -18,11 +21,16 @@ class UserServices {
 		}
 	}
 
-	// this will login the user with appropriate cradentional
+	/**
+	 * This function will login the user with username and password
+	 * STEP1 => use the getUser method to get user data
+	 * STEP2 => then compare the user data password and user client provided password
+	 * STEP3 => then after successfull password verification, we get the all the todos of the respective user
+	 * STEP4 => in between we add the extra users attribute to the data before sending the clint
+	 */
 	async loginUser({ username, password }) {
 		try {
 			const data = await this.userRepository.getUser(username);
-			console.log(data.data.password);
 			const response = bcrypt.compareSync(password, data.data.password);
 			if (!response) {
 				return {
@@ -31,12 +39,11 @@ class UserServices {
 					todos: [],
 				};
 			}
-			const todos = await this.userRepository.getUserTodos(data.data.id);
-			const updatedTodos = await this.updateTodos(todos);
+			const todos = await this.getUserTodos(data.data.id);
 			return {
 				loginStatus: response,
 				userId: data.data.id,
-				todos: updatedTodos,
+				todos: todos,
 			};
 		} catch (error) {
 			console.log('Something went worng in the service layer..!');
@@ -44,7 +51,10 @@ class UserServices {
 		}
 	}
 
-	// this will delete the user
+	/**
+	 * This function will DELETE the user account taking userId from the client.
+	 * STEP1 => it simplet DELETE the user from repository layer.
+	 */
 	async deleteuser(userId) {
 		try {
 			const reponse = await this.userRepository.deleteUser(userId);
@@ -55,8 +65,10 @@ class UserServices {
 		}
 	}
 
-	// this will update the user details
-	// ryt now i am not using any ware
+	/**
+	 * This will UPDATE the user data provided userId and userData from the client.
+	 * STEP1 => it simply passed the userId which user to update and userData what to update. from the repository layer.
+	 */
 	async updateUser(userId, userData) {
 		try {
 			const user = await this.userRepository.updateUser(userId, userData);
@@ -68,6 +80,12 @@ class UserServices {
 	}
 
 	// this will get all the todos assigned to the user
+	/**
+	 * This function gives all the todo of the user provided userId from the client.
+	 * STEP1 => get all the todos of user using the userId.
+	 * STEP2 => update the resulted todso with extra attribute called users
+	 * STEP3 => then return the updated todos with user attribute.
+	 */
 	async getUserTodos(userId) {
 		try {
 			const todos = await this.userRepository.getUserTodos(userId);
@@ -79,8 +97,16 @@ class UserServices {
 		}
 	}
 
-	// this function update the todo object before pushing to the client
-	// this will ass the users attribute array which show all the user assigned to invidual task of the user
+	/**
+	 * HELPER FUNCTION
+	 * This function will updates the todos data fetch by the user
+	 * STEP1 => create the empty array called updatedTodosArray
+	 * STEP2 => create a promise where map through the every todo and add the usersOfTodo array
+	 * STEP2.1 => create the usersOfTodo array witht the getThisTodoUsers providing the todoId
+	 * STEP2.2 => now push whole todo data with updated user attribut with the usersOfTodo
+	 * STEP3 => clear all the promise
+	 * STEP4 => return the updatedTodoArray.
+	 */
 	async updateTodos(todos) {
 		// this function will add the all the associated users to the perticular task.
 		const updatedTodosArray = [];
@@ -93,10 +119,12 @@ class UserServices {
 		return updatedTodosArray;
 	}
 
-	// this function will return me weather the user persent or not
-	// -> we take username and verifiy that
-	// -> if user found we provide username and userId
-	// -> if user not found we send same message like your not found
+	/**
+	 * This function will return me weather the user persent or not
+	 * STEP1 => we take username and verifiy that
+	 * STEP2 => if user found we filtering out the only username and userId
+	 * STEP3 => if user not found we send same message like your not found
+	 */
 	async getUser(username) {
 		try {
 			const response = await this.userRepository.getUser(username);
