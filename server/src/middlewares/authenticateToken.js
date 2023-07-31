@@ -2,8 +2,8 @@ const jwt = require('jsonwebtoken');
 const { JWT_KEY } = require('../config/serverConfig');
 
 const authenticateToken = async (req, res, next) => {
-	if (req.headers.token) {
-		jwt.verify(req.headers.token, JWT_KEY, (err, user) => {
+	if (req.headers.authorization) {
+		jwt.verify(req.headers.authorization, JWT_KEY, (err, user) => {
 			if (err) {
 				return res.status(401).json({
 					data: {},
